@@ -19,7 +19,7 @@ public class Testing : MonoBehaviour
 
         foreach (var p in PlayerManager.Instance.players)
         {
-            print(p.PlayerNumber);
+            //print(p.PlayerNumber);
         }
     }
 }
