@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody Hips { get; set; }
     [SerializeField] private Rigidbody hips;
 
-    [SerializeField] private BoxCollider meleeCollision;
+    [SerializeField] private GameObject meleeCollision;
     public bool IsGrounded { get; set; }
 
     private float turnSmoothVelocity;
@@ -101,6 +101,20 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Punch()
     {
-        meleeCollision.enabled = true;
+        StartCoroutine(ActiveMeleeCollision());
+    }
+
+    /// <summary>
+    /// Enable the melee box for a short time,
+    /// then disable
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator ActiveMeleeCollision()
+    {
+        meleeCollision.SetActive(true);
+
+        yield return new WaitForSeconds(0.5f);
+
+        meleeCollision.SetActive(false);
     }
 }
