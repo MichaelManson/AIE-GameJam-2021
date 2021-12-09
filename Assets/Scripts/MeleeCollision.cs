@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class MeleeCollision : MonoBehaviour
 {
+
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Hitting " + other.gameObject.name);
+        if(other.transform.parent.TryGetComponent<PlayerController>(out PlayerController something))
+        {
+            if (something == null)
+                return;
+            Debug.Log("Knockback");
 
-        other.GetComponent<Rigidbody>().AddForce(1000 * Vector3.right);
+            something.Hips.AddForce(Vector3.right * 3000.0f);
+        }
+
     }
 }

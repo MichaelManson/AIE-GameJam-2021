@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 1.0f;
     [SerializeField] private float jumpForce = 1.0f;
+
+    public Rigidbody Hips { get; set; }
     [SerializeField] private Rigidbody hips;
 
     [SerializeField] private BoxCollider meleeCollision;
@@ -33,6 +35,8 @@ public class PlayerController : MonoBehaviour
     {
         // Default isGrounded check to true
         IsGrounded = true;
+
+        Hips = hips;
     }
 
     private void OnEnable()
