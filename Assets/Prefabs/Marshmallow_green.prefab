@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 8296135198307072916}
   - component: {fileID: 5996213661907940398}
   - component: {fileID: 162016910328540330}
+  - component: {fileID: 7493044161609169210}
   m_Layer: 0
   m_Name: Marshmallow_Yellow
   m_TagString: Untagged
@@ -112,3 +113,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7493044161609169210
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8060463609340603369}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.09999998, y: 0.11, z: 0.099999964}
+  m_Center: {x: -0.0000000055879354, y: 0.055, z: 0.000000009313226}
