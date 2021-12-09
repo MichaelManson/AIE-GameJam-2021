@@ -186,6 +186,44 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Profile",
+            "id": "73d93540-e3ce-4cf9-9371-a6a0feff2ae9",
+            "actions": [
+                {
+                    "name": "Ready",
+                    "type": "Button",
+                    "id": "d32b84b7-1444-4337-8327-21e19b80a910",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "76ed8ca2-5acf-452d-80fe-e6463b7aa284",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Ready",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a2f6995c-514b-451a-8230-094da43b99ec",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Ready",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

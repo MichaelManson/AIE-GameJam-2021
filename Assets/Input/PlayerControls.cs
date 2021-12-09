@@ -199,6 +199,44 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Profile"",
+            ""id"": ""73d93540-e3ce-4cf9-9371-a6a0feff2ae9"",
+            ""actions"": [
+                {
+                    ""name"": ""Ready"",
+                    ""type"": ""Button"",
+                    ""id"": ""d32b84b7-1444-4337-8327-21e19b80a910"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""76ed8ca2-5acf-452d-80fe-e6463b7aa284"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ready"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a2f6995c-514b-451a-8230-094da43b99ec"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ready"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -208,6 +246,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Punch = m_Player.FindAction("Punch", throwIfNotFound: true);
+        // Profile
+        m_Profile = asset.FindActionMap("Profile", throwIfNotFound: true);
+        m_Profile_Ready = m_Profile.FindAction("Ready", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -302,10 +343,47 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // Profile
+    private readonly InputActionMap m_Profile;
+    private IProfileActions m_ProfileActionsCallbackInterface;
+    private readonly InputAction m_Profile_Ready;
+    public struct ProfileActions
+    {
+        private @PlayerControls m_Wrapper;
+        public ProfileActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Ready => m_Wrapper.m_Profile_Ready;
+        public InputActionMap Get() { return m_Wrapper.m_Profile; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ProfileActions set) { return set.Get(); }
+        public void SetCallbacks(IProfileActions instance)
+        {
+            if (m_Wrapper.m_ProfileActionsCallbackInterface != null)
+            {
+                @Ready.started -= m_Wrapper.m_ProfileActionsCallbackInterface.OnReady;
+                @Ready.performed -= m_Wrapper.m_ProfileActionsCallbackInterface.OnReady;
+                @Ready.canceled -= m_Wrapper.m_ProfileActionsCallbackInterface.OnReady;
+            }
+            m_Wrapper.m_ProfileActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Ready.started += instance.OnReady;
+                @Ready.performed += instance.OnReady;
+                @Ready.canceled += instance.OnReady;
+            }
+        }
+    }
+    public ProfileActions @Profile => new ProfileActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnPunch(InputAction.CallbackContext context);
+    }
+    public interface IProfileActions
+    {
+        void OnReady(InputAction.CallbackContext context);
     }
 }
