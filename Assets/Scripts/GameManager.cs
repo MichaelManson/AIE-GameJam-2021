@@ -128,6 +128,9 @@ public class GameManager : MonoBehaviour
         // Spawn every player at the appropriate position
         foreach (var player in PlayerManager.Instance.players)
         {
+            // Resets all forces
+            StartCoroutine(Test(player));
+
             player.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
             player.center.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
             player.center.transform.position = spawnLocations[player.PlayerNumber].transform.position;
@@ -135,6 +138,17 @@ public class GameManager : MonoBehaviour
             
             print(player.center.transform.position + ", " + spawnLocations[player.PlayerNumber].transform.position);
         }
+    }
+
+    private IEnumerator Test(Player player)
+    {
+        // Turn on kinematic, so all forces are removed from player
+        player.center.isKinematic = true;
+
+        yield return new WaitForSeconds(0.5f);
+
+        // Turn it back on, so we can move it
+        player.center.isKinematic = false;
     }
     
     private void LoadRandomLevel()
