@@ -8,7 +8,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed = 1.0f;
     [SerializeField] private float jumpForce = 1.0f;
     [SerializeField] private Rigidbody hips;
+    [SerializeField] private Transform skeletonGroup;
+
+    [SerializeField] private BoxCollider meleeCollision;
     public bool IsGrounded { get; set; }
+
+    private float turnSmoothVelocity;
+    [SerializeField] private float turnSmoothTime = 0.1f;
 
     private PlayerControls playerControls;
 
@@ -67,18 +73,34 @@ public class PlayerController : MonoBehaviour
 
             isJump = true;
         }
-        //else
-           // isJump = false;
+        
+        if(playerControls.Player.Punch.triggered)
+        {
+            Punch();
+        }
     }
 
     private void FixedUpdate()
     {
         Vector2 moveInput = playerControls.Player.Move.ReadValue<Vector2>();
 
+        Debug.Log(moveInput);
+
         velocity = new Vector3(moveInput.x, 0, 0).normalized;
 
         if (velocity.magnitude >= 0.1f)
         {
+            Debug.Log("Applying force");
+            Vector3 dir = -velocity;
+            //float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            //transform.root.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+
+            float targetAngle = Mathf.Atan2(velocity.x, velocity.z) * Mathf.Rad2Deg;
+            float angle = Mathf.SmoothDampAngle(skeletonGroup.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            //skeletonGroup.rotation = Quaternion.Euler(0f, angle, 0f);
+
+            Debug.Log("Vecloity: " + velocity * speed);
 
             hips.AddForce(velocity * speed);
         }
@@ -96,5 +118,13 @@ public class PlayerController : MonoBehaviour
 
             isJump = false;
         }
+    }
+
+    /// <summary>
+    /// Will be activated and deactived via animation event
+    /// </summary>
+    private void Punch()
+    {
+        meleeCollision.enabled = true;
     }
 }
