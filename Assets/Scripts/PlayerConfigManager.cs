@@ -12,12 +12,18 @@ public class PlayerConfigManager : MonoBehaviour
     public Transform[] points;
 
     private List<PlayerConfig> playersJoined = new List<PlayerConfig>();
+    private bool[] playersReady;
 
     private int count = 0;
 
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        playersReady = new bool[4];
     }
 
     public void SpawnPlayerProfile(PlayerInput input)
@@ -42,7 +48,7 @@ public class PlayerConfigManager : MonoBehaviour
     {
         if (isReady)
         {
-
+            playersReady[player.playerId] = isReady;
         }
         else
         {
