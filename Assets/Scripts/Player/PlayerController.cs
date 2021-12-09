@@ -8,7 +8,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed = 1.0f;
     [SerializeField] private float jumpForce = 1.0f;
     [SerializeField] private Rigidbody hips;
+    [SerializeField] private Transform skeletonGroup;
+
+    [SerializeField] private BoxCollider meleeCollision;
     public bool IsGrounded { get; set; }
+
+    private float turnSmoothVelocity;
+    [SerializeField] private float turnSmoothTime = 0.1f;
+
+    [SerializeField]
+    private ConfigurableJoint hipJoint;
 
     private PlayerControls playerControls;
 
@@ -18,9 +27,6 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        hips = GetComponent<Rigidbody>();
-        Debug.Assert(hips != null, "hips are null!");
-
         playerControls = new PlayerControls();
     }
 
@@ -67,18 +73,32 @@ public class PlayerController : MonoBehaviour
 
             isJump = true;
         }
-        //else
-           // isJump = false;
+        
+        if(playerControls.Player.Punch.triggered)
+        {
+            Punch();
+        }
     }
 
     private void FixedUpdate()
     {
         Vector2 moveInput = playerControls.Player.Move.ReadValue<Vector2>();
 
+        Debug.Log(moveInput);
+
         velocity = new Vector3(moveInput.x, 0, 0).normalized;
 
         if (velocity.magnitude >= 0.1f)
         {
+            Debug.Log("Applying force");
+            Vector3 dir = -velocity;
+
+            // Rotate the character
+            float targetAngle = Mathf.Atan2(dir.z, dir.x) * Mathf.Rad2Deg;
+            hipJoint.targetRotation = Quaternion.Euler(0, targetAngle, 0);
+
+
+            Debug.Log("Vecloity: " + velocity * speed);
 
             hips.AddForce(velocity * speed);
         }
@@ -96,5 +116,13 @@ public class PlayerController : MonoBehaviour
 
             isJump = false;
         }
+    }
+
+    /// <summary>
+    /// Will be activated and deactived via animation event
+    /// </summary>
+    private void Punch()
+    {
+        meleeCollision.enabled = true;
     }
 }
