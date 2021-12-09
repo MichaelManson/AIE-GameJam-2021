@@ -35,8 +35,8 @@ public class Timer : MonoBehaviour
     {
         StopAllCoroutines();
 
-        UIManager.Instance.timerText.gameObject.SetActive(false);
         
-        GameManager.MatchOver();
+        
+        GameManager.RoundOver();
     }
 }
