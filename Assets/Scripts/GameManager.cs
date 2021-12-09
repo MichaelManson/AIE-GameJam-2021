@@ -128,6 +128,9 @@ public class GameManager : MonoBehaviour
         // Spawn every player at the appropriate position
         foreach (var player in PlayerManager.Instance.players)
         {
+            // Resets all forces
+            StartCoroutine(Test(player));
+
             player.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
             player.center.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
             player.center.transform.position = spawnLocations[player.PlayerNumber].transform.position;
@@ -135,6 +138,17 @@ public class GameManager : MonoBehaviour
             
             print(player.center.transform.position + ", " + spawnLocations[player.PlayerNumber].transform.position);
         }
+    }
+
+    private IEnumerator Test(Player player)
+    {
+        // Turn on kinematic, so all forces are removed from player
+        player.center.isKinematic = true;
+
+        yield return new WaitForSeconds(0.5f);
+
+        // Turn it back on, so we can move it
+        player.center.isKinematic = false;
     }
     
     private void LoadRandomLevel()
@@ -203,7 +217,7 @@ public class GameManager : MonoBehaviour
         
 
         // Turn off win text
-        UIManager.Instance.winCanvas.gameObject.SetActive(false);
+        UIManager.Instance.winText.gameObject.SetActive(false);
         
         print("NOW");
         
@@ -246,6 +260,8 @@ public class GameManager : MonoBehaviour
     internal async Task Countdown()
     {
         var countdownAnimation = _ui.countdownText.GetComponent<Animation>();
+
+        Time.timeScale = 0f;
         
         _ui.countdownText.text = "3";
         countdownAnimation.Play();
@@ -272,6 +288,8 @@ public class GameManager : MonoBehaviour
 
         countdownAnimation.Stop();
         _ui.countdownText.text = "";
+
+        Time.timeScale = 1f;
     }
 
     #endregion
