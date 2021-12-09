@@ -23,6 +23,8 @@ public class UIManager : MonoBehaviour
 
     #region Fields
     
+    // public:
+    
     [Header("Canvases")] 
     public Canvas pauseCanvas;
     public Canvas winCanvas;
@@ -52,7 +54,6 @@ public class UIManager : MonoBehaviour
     }
 
     public void ShowPauseMenu(bool showPauseMenu = true) => pauseCanvas.gameObject.SetActive(showPauseMenu);
-    
     public void ShowWinCanvas(bool showWinCanvas = true) => winCanvas.gameObject.SetActive(showWinCanvas);
 
 }
