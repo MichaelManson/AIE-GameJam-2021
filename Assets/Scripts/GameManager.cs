@@ -12,6 +12,7 @@ using Random = UnityEngine.Random;
 // ReSharper disable ConvertToAutoPropertyWithPrivateSetter
 // ReSharper disable once ForeachCanBeConvertedToQueryUsingAnotherGetEnumerator
 // ReSharper disable once MemberCanBePrivate.Global
+// ReSharper disable Unity.InefficientPropertyAccess
 
 public class GameManager : MonoBehaviour
 {
@@ -122,10 +123,17 @@ public class GameManager : MonoBehaviour
         // Find all the spawn locations of the current level
         var spawnLocations = GameObject.Find("Spawns").GetComponentsInChildren<Transform>();
         
+        print(spawnLocations[0].parent.name);
+        
         // Spawn every player at the appropriate position
         foreach (var player in PlayerManager.Instance.players)
         {
+            player.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+            player.center.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
             player.center.transform.position = spawnLocations[player.PlayerNumber].transform.position;
+            player.center.velocity = Vector3.zero;
+            
+            print(player.center.transform.position + ", " + spawnLocations[player.PlayerNumber].transform.position);
         }
     }
     
@@ -201,6 +209,8 @@ public class GameManager : MonoBehaviour
         
         // Load a random level
         LoadRandomLevel();
+
+        await Task.Delay(100);
         
         // Spawn all the characters in the right spot
         SpawnCharacters();
@@ -213,7 +223,7 @@ public class GameManager : MonoBehaviour
         
         await Countdown();
         
-        _timer.BeginTimer(5);
+        _timer.BeginTimer(30);
     }
     
     internal static async Task SlowTime()
