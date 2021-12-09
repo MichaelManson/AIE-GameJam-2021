@@ -6,6 +6,6 @@ using UnityEngine.SceneManagement;
 [CreateAssetMenu(fileName = "Level", menuName = "Level")]
 public class Level : ScriptableObject
 {
-    public string sceneName;
+    public GameObject levelGeo;
     public Sprite previewImage;
 }

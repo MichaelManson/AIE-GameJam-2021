@@ -4,28 +4,49 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    public List<Level> levels = new List<Level>();
+    #region Fields
     
-    // Start is called before the first frame update
-    void Start()
+    // public:
+    
+    [Tooltip("Where a level will be spawned. The spawned level will become a child of this object.")]
+    public Transform levelParent;
+    
+    public List<Level> levels = new List<Level>();
+
+    // protected:
+    
+    
+    // private:
+    
+    private GameObject _currentLevelGeo;
+
+    #endregion
+    
+    private void Start()
     {
-        foreach (var level in levels)
-        {
-            print(level.sceneName);
-        }
+        SetupLevels();
     }
 
-    public void SetupLevels()
+    private void SetupLevels()
     {
-        for (var index = 0; index < levels.Count; index++)
+        // Loop through all the levels and update the level select buttons to have the right background
+        for (var i = 0; i < levels.Count; i++)
         {
-            var level = levels[index];
-            UIManager.Instance.levelImages[index].sprite = level.previewImage;
+            var level = levels[i];
+            UIManager.Instance.levelImages[i].sprite = level.previewImage;
         }
     }
     
+    /// <summary>
+    /// Loads a new Level into the scene.
+    /// </summary>
+    /// <param name="l"></param>
     public void LoadLevel(Level l)
     {
-        SceneManager.LoadScene(l.sceneName);
+        // If a level is already loaded, destroy the old one...
+        if (_currentLevelGeo) Destroy(_currentLevelGeo);
+
+        // and load the new one
+        _currentLevelGeo = Instantiate(l.levelGeo, levelParent);
     }
 }

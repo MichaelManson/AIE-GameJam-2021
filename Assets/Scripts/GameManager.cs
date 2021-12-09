@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     #region Singleton
     
+    // ReSharper disable once MemberCanBePrivate.Global
     public static GameManager Instance;
     
     private void Awake()
@@ -23,14 +24,24 @@ public class GameManager : MonoBehaviour
     
     #endregion
     
+    #region Fields
+    
+    // private:
+    
     private Timer _timer;
     private UIManager _ui;
+    private LevelManager _level;
+    
+    #endregion
     
     // Start is called before the first frame update
     private void Start()
     {
         _timer = GetComponent<Timer>();
+        _level = GetComponent<LevelManager>();
         _ui = UIManager.Instance;
+        
+        _level.LoadLevel(_level.levels[0]);
     }
     
     public static void PauseGame()
