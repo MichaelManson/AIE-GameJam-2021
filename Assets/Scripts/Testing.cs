@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Threading.Tasks;
+using UnityEngine;
 
 public class Testing : MonoBehaviour
 {
@@ -6,20 +7,19 @@ public class Testing : MonoBehaviour
 
     private void Start()
     {
-        Instantiate(playerTestPrefab);
-        Instantiate(playerTestPrefab);
-        Instantiate(playerTestPrefab);
-        var i = Instantiate(playerTestPrefab);
-        Instantiate(playerTestPrefab);
-        Instantiate(playerTestPrefab);
+        SpawnPlayers();
+    }
 
-        PlayerManager.Instance.RemovePlayer(i.GetComponent<Player>());
+    private async void SpawnPlayers()
+    {
+        Instantiate(playerTestPrefab, Vector3.zero, Quaternion.identity);
+
+        await Task.Delay(500);
         
-        print("BREAK ************");
+        Instantiate(playerTestPrefab, Vector3.zero, Quaternion.identity);
+        
+        await Task.Delay(500);
 
-        foreach (var p in PlayerManager.Instance.players)
-        {
-            //print(p.PlayerNumber);
-        }
+        Instantiate(playerTestPrefab, Vector3.zero, Quaternion.identity);
     }
 }

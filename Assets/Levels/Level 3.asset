@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fae8c70d9c56adc4f81bf32b5f81b8b9, type: 3}
-  m_Name: Level Test
+  m_Name: Level 3
   m_EditorClassIdentifier: 
-  levelGeo: {fileID: 1932103697910457833, guid: 701fd7bd6c4aa0048a2643e2f8ee951b, type: 3}
+  levelGeo: {fileID: 8591902852524553264, guid: 202db226a457bb247a3eca18be82477e, type: 3}
   previewImage: {fileID: 0}
+  levelObjectiveType: 0

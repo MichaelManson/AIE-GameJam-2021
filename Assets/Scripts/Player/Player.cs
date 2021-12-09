@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     public int Wins { get; private set; }
     public int PlayerNumber { get; set; }
 
+    public Rigidbody center;
+
     #endregion
 
     private void OnEnable()

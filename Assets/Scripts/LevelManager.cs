@@ -4,6 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    public enum LevelObjectiveType
+    {
+        Deathmatch,
+        Race,
+            
+    }
+    
     #region Fields
     
     // public:
@@ -12,6 +19,8 @@ public class LevelManager : MonoBehaviour
     public Transform levelParent;
     
     public List<Level> levels = new List<Level>();
+
+    public Level currentLevel;
 
     // protected:
     

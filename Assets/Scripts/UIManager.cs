@@ -38,6 +38,7 @@ public class UIManager : MonoBehaviour
     
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI winText;
+    public TextMeshProUGUI countdownText;
 
     [Space] public Image[] fadePanels = new Image[2];
     
