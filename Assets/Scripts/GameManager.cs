@@ -125,13 +125,7 @@ public class GameManager : MonoBehaviour
         // Spawn every player at the appropriate position
         foreach (var player in PlayerManager.Instance.players)
         {
-            var transform1 = player.transform;
-            
-            transform1.position = Vector3.zero;
-            
-            
-            /*transform1.position = spawnLocations[player.PlayerNumber].transform.position;
-            transform1.rotation = Quaternion.identity;*/
+            player.center.transform.position = spawnLocations[player.PlayerNumber].transform.position;
         }
     }
     
