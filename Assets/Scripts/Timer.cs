@@ -12,7 +12,7 @@ public class Timer : MonoBehaviour
         StartCoroutine(TimerCountdown(duration));
     }
 
-    private static IEnumerator TimerCountdown(int duration)
+    private IEnumerator TimerCountdown(int duration)
     {
         var time = duration;
         
@@ -28,12 +28,15 @@ public class Timer : MonoBehaviour
             UIManager.Instance.timerText.text = time.ToString();
         }
         
-        OnTimerEnd();
+        TimerEnd();
     }
 
-    private static void OnTimerEnd()
+    private void TimerEnd()
     {
-        Debug.Log("Timer is finished!");
+        StopAllCoroutines();
+
         UIManager.Instance.timerText.gameObject.SetActive(false);
+        
+        GameManager.MatchOver();
     }
 }

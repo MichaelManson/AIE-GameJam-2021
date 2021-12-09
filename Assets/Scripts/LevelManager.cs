@@ -24,11 +24,13 @@ public class LevelManager : MonoBehaviour
     
     private void Start()
     {
-        SetupLevels();
+        //SetupLevels();
     }
 
     private void SetupLevels()
     {
+        if (UIManager.Instance.levelImages.Count == 0) return;
+        
         // Loop through all the levels and update the level select buttons to have the right background
         for (var i = 0; i < levels.Count; i++)
         {
@@ -36,11 +38,10 @@ public class LevelManager : MonoBehaviour
             UIManager.Instance.levelImages[i].sprite = level.previewImage;
         }
     }
-    
+
     /// <summary>
     /// Loads a new Level into the scene.
     /// </summary>
-    /// <param name="l"></param>
     public void LoadLevel(Level l)
     {
         // If a level is already loaded, destroy the old one...

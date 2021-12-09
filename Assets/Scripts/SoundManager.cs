@@ -25,8 +25,7 @@ public class SoundManager : MonoBehaviour
     
     // private:
     
-    [SerializeField]
-    private AudioSource musicSource;
+    [SerializeField] private AudioSource musicSource;
     
     #endregion
     
