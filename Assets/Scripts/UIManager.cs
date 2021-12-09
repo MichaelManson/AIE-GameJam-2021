@@ -44,12 +44,14 @@ public class UIManager : MonoBehaviour
     private void OnEnable()
     {
         GameManager.OnGameWon += GameWon;
-        GameManager.OnMatchOver += MatchOver;
+        GameManager.OnRoundOver += RoundOver;
     }
 
     private void OnDisable()
     {
         GameManager.OnGameWon -= GameWon;
+        GameManager.OnRoundOver -= RoundOver;
+
     }
 
     // Start is called before the first frame update
@@ -87,7 +89,7 @@ public class UIManager : MonoBehaviour
         ShowWinCanvas();
     }
 
-    private void MatchOver()
+    private void RoundOver()
     {
         
     }
