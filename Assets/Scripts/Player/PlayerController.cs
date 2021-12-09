@@ -27,9 +27,6 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        hips = GetComponent<Rigidbody>();
-        Debug.Assert(hips != null, "hips are null!");
-
         playerControls = new PlayerControls();
     }
 
