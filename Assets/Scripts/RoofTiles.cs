@@ -19,7 +19,7 @@ public class RoofTiles : MonoBehaviour
     {
         if (steppedOn == true)
         {
-            DropTile();
+            StartCoroutine(DropTile());
         }
     }
 
@@ -27,7 +27,7 @@ public class RoofTiles : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            DropTile();
+            StartCoroutine(DropTile());
         }
     }
 
