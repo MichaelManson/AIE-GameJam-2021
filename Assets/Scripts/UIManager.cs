@@ -1,7 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -21,20 +21,26 @@ public class UIManager : MonoBehaviour
     
     #endregion
 
+    #region Fields
+    
     [Header("Canvases")] 
     public Canvas pauseCanvas;
     public Canvas winCanvas;
     
     public TextMeshProUGUI[] playerScores = new TextMeshProUGUI[4];
     
+    public List<Image> levelImages = new List<Image>();
+    
     [Space]
     
     public TextMeshProUGUI timerText;
     
+    #endregion
+    
     // Start is called before the first frame update
     private void Start()
     {
-        TurnPlayerScoresOn(false);
+        //TurnPlayerScoresOn(false);
     }
 
     private void TurnPlayerScoresOn(bool turnOn = true)
