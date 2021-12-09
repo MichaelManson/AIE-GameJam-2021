@@ -8,4 +8,5 @@ public class Level : ScriptableObject
 {
     public GameObject levelGeo;
     public Sprite previewImage;
+    public LevelManager.LevelObjectiveType levelObjectiveType;
 }
