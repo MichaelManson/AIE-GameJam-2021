@@ -117,13 +117,29 @@ public class GameManager : MonoBehaviour
         NewRound();
     }
 
-    private Level LoadRandomLevel()
+    public void SpawnCharacters()
+    {
+        // Find all the spawn locations of the current level
+        var spawnLocations = GameObject.Find("Spawns").GetComponentsInChildren<Transform>();
+        
+        // Spawn every player at the appropriate position
+        foreach (var player in PlayerManager.Instance.players)
+        {
+            var transform1 = player.transform;
+            
+            transform1.position = Vector3.zero;
+            
+            
+            /*transform1.position = spawnLocations[player.PlayerNumber].transform.position;
+            transform1.rotation = Quaternion.identity;*/
+        }
+    }
+    
+    private void LoadRandomLevel()
     {
         // If there aren't any available levels, add all levels back to the list
-        if (_availableLevels.Count == 0) _availableLevels = _level.levels; print("YO" + _level.levels.Count);
-        
-        print(_availableLevels.Count);
-        
+        if (_availableLevels.Count == 0) _availableLevels = _level.levels;
+
         // Pick a level at random from the list of available levels
         var r = Random.Range(0, _availableLevels.Count - 1);
 
@@ -137,8 +153,6 @@ public class GameManager : MonoBehaviour
         // Remove the chosen level from the available levels,
         // so the players don't play the same levels over and over again
         _availableLevels.Remove(level);
-
-        return level;
     }
 
     public void MatchWinner(Player player) => _lastWinner = player;
@@ -192,16 +206,16 @@ public class GameManager : MonoBehaviour
         print("NOW");
         
         // Load a random level
-        if (LoadRandomLevel().levelObjectiveType is LevelManager.LevelObjectiveType.Deathmatch)
-        {
-            // Do something
-        }
+        LoadRandomLevel();
+        
+        // Spawn all the characters in the right spot
+        SpawnCharacters();
 
         // Check if a player has won the game
         if (CheckGameWon())
             GameWon();
 
-        await Task.Delay(1000);
+        await Task.Delay(2000);
         
         await Countdown();
         
@@ -213,8 +227,8 @@ public class GameManager : MonoBehaviour
         // Slow time to 0.5x speed
         Time.timeScale = 0.5f;
         
-        // Wait 2 seconds (realtime)
-        await Task.Delay(2000);
+        // Wait 3 seconds (realtime)
+        await Task.Delay(3000);
     }
     
     internal async Task DoLevelTransitionAnimation()
