@@ -40,14 +40,31 @@ public class PlayerConfigManager : MonoBehaviour
     public void OnReady()
     {
         if (playersJoined.Count == 0)
+        {
+            StopAllCoroutines();
             return;
+        }
 
         for(int i = 0; i < playersJoined.Count; i++)
         {
             // If a player isn't ready, exit
             if (!playersJoined[i].IsReady)
+            {
+                StopAllCoroutines();
                 return;
+            }
         }
+
+        StartCoroutine(BeginCountDown());
+    }
+
+    /// <summary>
+    /// Temp function, will eventually use timer class
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator BeginCountDown()
+    {
+        yield return new WaitForSeconds(3.0f);
 
         Debug.Log("All players ready. Proceed!");
     }
