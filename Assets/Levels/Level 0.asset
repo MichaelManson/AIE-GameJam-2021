@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fae8c70d9c56adc4f81bf32b5f81b8b9, type: 3}
   m_Name: Level 0
   m_EditorClassIdentifier: 
-  sceneName: Test01
+  levelGeo: {fileID: 4133331109485417213, guid: 3c5460144c7e26a4fa0ed6ba73dbc560, type: 3}
   previewImage: {fileID: 0}
