@@ -28,8 +28,33 @@ public class PlayerConfigManager : MonoBehaviour
 
         count++;
 
+        PlayerConfig player = input.GetComponent<PlayerConfig>();
+        player.playerId = count;
+
         // Keep track of currently-joined players
-        playersJoined.Add(input.GetComponent<PlayerConfig>());
+        playersJoined.Add(player);
+
+        Debug.Log(playersJoined.Count); // TO - DO: keep this
+        // Hold another list of booleans 
+    }
+
+    public void UpdatePlayerProfiles(PlayerConfig player, bool isReady)
+    {
+        if (isReady)
+        {
+
+        }
+        else
+        {
+
+            // Decrease count
+            count--;
+
+            // Remove from player list
+            playersJoined.Remove(player);
+
+            Debug.Log(playersJoined.Count);
+        }
     }
 
 

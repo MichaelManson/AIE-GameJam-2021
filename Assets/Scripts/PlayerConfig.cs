@@ -12,6 +12,8 @@ public class PlayerConfig : MonoBehaviour
     public TextMeshProUGUI playerText;
     public TextMeshProUGUI readyText;
 
+    public int playerId; // Used to identify player number (1, 2,3,4)
+
     public bool IsReady {get; set;}
 
     private PlayerControls playerControls;
@@ -38,6 +40,9 @@ public class PlayerConfig : MonoBehaviour
     private void Ready_performed(InputAction.CallbackContext obj)
     {
         IsReady = !IsReady;
+
+        PlayerConfigManager.Instance.UpdatePlayerProfiles(this, IsReady);
+
 
         Debug.Log("Ready state: " + IsReady);
 
