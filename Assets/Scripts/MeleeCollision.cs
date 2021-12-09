@@ -24,5 +24,11 @@ public class MeleeCollision : MonoBehaviour
             enemy.Hips.AddForce(transform.forward * knockbackForce);
         }
 
+
+       if(other.transform.parent.TryGetComponent<Health>(out Health health))
+        {
+            health.TakeDamage(10.0f);
+        }
+
     }
 }
