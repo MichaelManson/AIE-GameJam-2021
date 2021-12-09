@@ -5,85 +5,96 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-
-    [SerializeField] [Range(0, 100)]
-    private float moveSpeed;
-
+    [SerializeField] private float speed = 1.0f;
     [SerializeField] private float jumpForce = 1.0f;
-
-    [SerializeField] private float gravity = -20.0f;
-
-    private CharacterController characterController;
-
-    private Vector2 moveInput;
-    private Vector3 velocity = Vector3.zero;
+    [SerializeField] private Rigidbody hips;
+    public bool IsGrounded { get; set; }
 
     private PlayerControls playerControls;
 
-    bool isGrounded;
+    private Vector3 velocity;
+
+    bool isJump;
 
     private void Awake()
     {
-        // Init input actions
-        playerControls = new PlayerControls();
+        hips = GetComponent<Rigidbody>();
+        Debug.Assert(hips != null, "hips are null!");
 
-        characterController = GetComponent<CharacterController>();
-        Debug.Assert(characterController != null, "characterController is null!");
+        playerControls = new PlayerControls();
+    }
+
+    private void Start()
+    {
+        // Default isGrounded check to true
+        IsGrounded = true;
     }
 
     private void OnEnable()
     {
         playerControls.Enable();
+
+        playerControls.Player.Jump.performed += Jump_performed;
+        playerControls.Player.Jump.canceled += Jump_Notperformed;
+    }
+
+    private void Jump_performed(InputAction.CallbackContext obj)
+    {
+        //isJump = true;
+    }
+
+    private void Jump_Notperformed(InputAction.CallbackContext obj)
+    {
+        //isJump = false;
     }
 
     private void OnDisable()
     {
-        playerControls.Disable();
+        playerControls.Enable();
+
+
+        playerControls.Player.Jump.performed -= Jump_performed;
+        playerControls.Player.Jump.canceled -= Jump_Notperformed;
     }
 
-    void Update()
+    private void Update()
     {
-        moveInput = playerControls.Player.Move.ReadValue<Vector2>() * moveSpeed;
-
-        if (moveInput.magnitude > 1)
+        if (playerControls.Player.Jump.triggered)
         {
-            // Ensures the magnitude of writeInput doesn't go over 1,
-            // especially on a controller, where acceleration is used
-            //moveInput = Vector3.ClampMagnitude(moveInput, 1f);
-        }
-
-        Debug.Log("Grounded: " + isGrounded);
-
-
-        // Read jump
-        if (playerControls.Player.Jump.triggered /*&& isGrounded*/)
-        {
+            //if(IsGrounded)
+            //{
             Debug.Log("Jumping");
-            velocity.y += Mathf.Sqrt(jumpForce * -3.0f * Physics.gravity.y);
+
+            isJump = true;
         }
-
-        if (isGrounded && velocity.y < 0)
-            velocity.y = 0.0f;
-
-        // If we are receiving input...
-        // if (moveInput.magnitude >= 0.1f)
-        //{
-        // Calculate the velocity
-        velocity.x = moveInput.x;
-        velocity.z = 0.0f;
-
-        // Apply gravity
-        velocity.y += Physics.gravity.y * Time.deltaTime;
-
-        Debug.Log("Velcoity: " + velocity);
-
-        Debug.Log("Gravity: " + Physics.gravity.y);
-
-        characterController.Move(velocity * Time.deltaTime);
+        //else
+           // isJump = false;
     }
 
     private void FixedUpdate()
     {
-        isGrounded = true;
+        Vector2 moveInput = playerControls.Player.Move.ReadValue<Vector2>();
+
+        velocity = new Vector3(moveInput.x, 0, 0).normalized;
+
+        if (velocity.magnitude >= 0.1f)
+        {
+
+            hips.AddForce(velocity * speed);
+        }
+
+
+        if(isJump && IsGrounded)
+        {
+            Debug.Log("Moving char up");
+            //if(IsGrounded)
+            //{
+               // Debug.Log("Jumping");
+                hips.AddForce(Vector3.up * jumpForce);
+                IsGrounded = false;
+            //}
+
+            isJump = false;
+        }
     }
 }
