@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed = 1.0f;
     [SerializeField] private float jumpForce = 1.0f;
     [SerializeField] private Rigidbody hips;
-    [SerializeField] private Transform skeletonGroup;
 
     [SerializeField] private BoxCollider meleeCollision;
     public bool IsGrounded { get; set; }
@@ -39,36 +38,17 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         playerControls.Enable();
-
-        playerControls.Player.Jump.performed += Jump_performed;
-        playerControls.Player.Jump.canceled += Jump_Notperformed;
-    }
-
-    private void Jump_performed(InputAction.CallbackContext obj)
-    {
-        //isJump = true;
-    }
-
-    private void Jump_Notperformed(InputAction.CallbackContext obj)
-    {
-        //isJump = false;
     }
 
     private void OnDisable()
     {
         playerControls.Enable();
-
-
-        playerControls.Player.Jump.performed -= Jump_performed;
-        playerControls.Player.Jump.canceled -= Jump_Notperformed;
     }
 
     private void Update()
     {
         if (playerControls.Player.Jump.triggered)
         {
-            //if(IsGrounded)
-            //{
             Debug.Log("Jumping");
 
             isJump = true;
@@ -97,9 +77,6 @@ public class PlayerController : MonoBehaviour
             float targetAngle = Mathf.Atan2(dir.z, dir.x) * Mathf.Rad2Deg;
             hipJoint.targetRotation = Quaternion.Euler(0, targetAngle, 0);
 
-
-            Debug.Log("Vecloity: " + velocity * speed);
-
             hips.AddForce(velocity * speed);
         }
 
@@ -107,12 +84,9 @@ public class PlayerController : MonoBehaviour
         if(isJump && IsGrounded)
         {
             Debug.Log("Moving char up");
-            //if(IsGrounded)
-            //{
-               // Debug.Log("Jumping");
-                hips.AddForce(Vector3.up * jumpForce);
-                IsGrounded = false;
-            //}
+
+            hips.AddForce(Vector3.up * jumpForce);
+            IsGrounded = false;
 
             isJump = false;
         }
