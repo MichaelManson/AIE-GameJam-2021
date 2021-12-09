@@ -1,17 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    #region Fields
+    
+    // public:
+    
     [Tooltip("Where a level will be spawned. The spawned level will become a child of this object.")]
     public Transform levelParent;
     
     public List<Level> levels = new List<Level>();
 
+    // protected:
+    
+    
+    // private:
+    
     private GameObject _currentLevelGeo;
 
+    #endregion
+    
     private void Start()
     {
         SetupLevels();

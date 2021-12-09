@@ -21,9 +21,15 @@ public class SoundManager : MonoBehaviour
     
     #endregion
 
+    #region Fields
+    
+    // private:
+    
     [SerializeField]
     private AudioSource musicSource;
-
+    
+    #endregion
+    
     public void PlayAudioClip(AudioClip audioClip, AudioSource audioSource, float delay = 0f)
     {
         audioSource.clip = audioClip;

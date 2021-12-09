@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Timer : MonoBehaviour
@@ -36,6 +35,5 @@ public class Timer : MonoBehaviour
     {
         Debug.Log("Timer is finished!");
         UIManager.Instance.timerText.gameObject.SetActive(false);
-
     }
 }
