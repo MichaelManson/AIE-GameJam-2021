@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     private float turnSmoothVelocity;
     [SerializeField] private float turnSmoothTime = 0.1f;
 
+    [SerializeField]
+    private ConfigurableJoint hipJoint;
+
     private PlayerControls playerControls;
 
     private Vector3 velocity;
@@ -92,13 +95,11 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Applying force");
             Vector3 dir = -velocity;
-            //float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            //transform.root.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
+            // Rotate the character
+            float targetAngle = Mathf.Atan2(dir.z, dir.x) * Mathf.Rad2Deg;
+            hipJoint.targetRotation = Quaternion.Euler(0, targetAngle, 0);
 
-            float targetAngle = Mathf.Atan2(velocity.x, velocity.z) * Mathf.Rad2Deg;
-            float angle = Mathf.SmoothDampAngle(skeletonGroup.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            //skeletonGroup.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Debug.Log("Vecloity: " + velocity * speed);
 

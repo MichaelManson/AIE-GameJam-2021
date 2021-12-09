@@ -9564,6 +9564,7 @@ MonoBehaviour:
   skeletonGroup: {fileID: 1615393215}
   meleeCollision: {fileID: 1122006475}
   turnSmoothTime: 0.1
+  hipJoint: {fileID: 1335076793}
 --- !u!1 &1348428918 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 525090982861884723, guid: ca93ac2fbe6b5dd4381ea17f45e62126, type: 3}
@@ -12625,6 +12626,7 @@ MonoBehaviour:
   skeletonGroup: {fileID: 1615393215}
   meleeCollision: {fileID: 1122006475}
   turnSmoothTime: 0.1
+  hipJoint: {fileID: 0}
 --- !u!1 &1620087582 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4940211887647760769, guid: ca93ac2fbe6b5dd4381ea17f45e62126, type: 3}
