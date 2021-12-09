@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 1.0f;
+    [SerializeField] private float airSpeed = 1.0f;
     [SerializeField] private float jumpForce = 1.0f;
 
     public Rigidbody Hips { get; set; }
@@ -14,9 +15,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject meleeCollision;
     public bool IsGrounded { get; set; }
 
-    private float turnSmoothVelocity;
-    [SerializeField] private float turnSmoothTime = 0.1f;
-
     [SerializeField]
     private ConfigurableJoint hipJoint;
 
@@ -24,7 +22,11 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 velocity;
 
-    bool isJump;
+    private bool hasJumped;
+
+    private Vector2 moveInput;
+
+    private float currentSpeed;
 
     private void Awake()
     {
@@ -55,21 +57,19 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Jumping");
 
-            isJump = true;
+            hasJumped = true;
         }
         
         if(playerControls.Player.Punch.triggered)
         {
             Punch();
         }
+
+        moveInput = playerControls.Player.Move.ReadValue<Vector2>();
     }
 
     private void FixedUpdate()
     {
-        Vector2 moveInput = playerControls.Player.Move.ReadValue<Vector2>();
-
-        Debug.Log(moveInput);
-
         velocity = new Vector3(moveInput.x, 0, 0).normalized;
 
         if (velocity.magnitude >= 0.1f)
@@ -81,19 +81,37 @@ public class PlayerController : MonoBehaviour
             float targetAngle = Mathf.Atan2(dir.z, dir.x) * Mathf.Rad2Deg;
             hipJoint.targetRotation = Quaternion.Euler(0, targetAngle, 0);
 
-            hips.AddForce(velocity * speed);
+            // If the player is moving while in air...
+            if (!IsGrounded)
+            {
+                Debug.Log("IN AIR");
+                hips.AddForce(velocity * airSpeed);
+
+                //currentSpeed = airSpeed;
+            }
+            else
+            {
+                Debug.Log("ON GROUND");
+                hips.AddForce(velocity * speed);
+
+                //currentSpeed = speed;
+            }
         }
 
 
-        if(isJump && IsGrounded)
+        if(hasJumped && IsGrounded)
         {
             Debug.Log("Moving char up");
 
             hips.AddForce(Vector3.up * jumpForce);
             IsGrounded = false;
 
-            isJump = false;
+            hasJumped = false;
+
+            //velocity.y += jumpForce;
+
         }
+        //hips.velocity = velocity * currentSpeed * Time.deltaTime;
     }
 
     /// <summary>
