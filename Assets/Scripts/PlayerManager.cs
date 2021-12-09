@@ -26,6 +26,29 @@ public class PlayerManager : MonoBehaviour
     
     public List<Player> players = new List<Player>();
 
+    public List<Player> GetPlayersOrderedByScore()
+    {
+        var tempList = players;
+        var temp = 0;
+        
+        // Bubble sort in descending order
+        for (var j = 0; j <= tempList.Count - 2; j++) 
+        {
+            for (var i = 0; i <= tempList.Count - 2; i++)
+            {
+                // ReSharper disable once InvertIf
+                if (tempList[i].PlayerNumber < tempList[i + 1].PlayerNumber)
+                {
+                    temp = tempList[i + 1].PlayerNumber;
+                    tempList[i + 1].PlayerNumber = tempList[i].PlayerNumber;
+                    tempList[i].PlayerNumber = temp;
+                }
+            }
+        }
+
+        return tempList;
+    }
+
     public void RemovePlayer(Player player)
     {
         // Remove the player from the list of active players

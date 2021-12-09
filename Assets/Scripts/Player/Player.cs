@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
         // Add new player to the list of players
         PlayerManager.Instance.players.Add(this);
         
-        Debug.Log(name + " " + PlayerNumber);
+        //Debug.Log(name + " " + PlayerNumber);
     }
 
     private void OnDisable()
@@ -52,6 +52,6 @@ public class Player : MonoBehaviour
         Wins++;
         
         GameManager.Instance.MatchWinner(this);
-        GameManager.OnRoundWon();
+        GameManager.RoundWon();
     }
 }

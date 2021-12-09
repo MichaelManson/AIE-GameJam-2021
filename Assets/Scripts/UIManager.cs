@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour
     #region Fields
     
     // public:
-    
+
     [Header("Canvases")] 
     public Canvas pauseCanvas;
     public Canvas winCanvas;
@@ -38,18 +38,22 @@ public class UIManager : MonoBehaviour
     
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI winText;
+
+    [Space] public Image[] fadePanels = new Image[2];
     
     #endregion
 
     private void OnEnable()
     {
         GameManager.OnGameWon += GameWon;
+        GameManager.OnRoundWon += RoundWon;
         GameManager.OnRoundOver += RoundOver;
     }
 
     private void OnDisable()
     {
         GameManager.OnGameWon -= GameWon;
+        GameManager.OnRoundWon -= RoundWon;
         GameManager.OnRoundOver -= RoundOver;
 
     }
@@ -62,6 +66,8 @@ public class UIManager : MonoBehaviour
         ShowWinCanvas(false);
 
         timerText.text = "";
+
+        //fadePanel.color = FadePanelColourClear;
     }
 
     private void TurnPlayerScoresOn(bool turnOn = true)
@@ -91,6 +97,19 @@ public class UIManager : MonoBehaviour
 
     private void RoundOver()
     {
+        timerText.gameObject.SetActive(false);
+
+        ShowWinCanvas();
         
+        winText.text = "Round Over...";
+    }
+
+    private void RoundWon()
+    {
+        timerText.gameObject.SetActive(false);
+        
+        ShowWinCanvas();
+        
+        winText.text = "Player " + GameManager.Instance.RoundWinner.PlayerNumber + " Wins The Round!";
     }
 }

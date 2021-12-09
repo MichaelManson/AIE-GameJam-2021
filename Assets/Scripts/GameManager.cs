@@ -1,16 +1,21 @@
-﻿using System;
+﻿using System.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using TMPro.EditorUtilities;
 using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
+// ReSharper disable MemberCanBePrivate.Global
+// ReSharper disable ConvertToAutoPropertyWithPrivateSetter
+// ReSharper disable once ForeachCanBeConvertedToQueryUsingAnotherGetEnumerator
+// ReSharper disable once MemberCanBePrivate.Global
 
 public class GameManager : MonoBehaviour
 {
     #region Singleton
     
-    // ReSharper disable once MemberCanBePrivate.Global
     public static GameManager Instance;
     
     private void Awake()
@@ -42,7 +47,11 @@ public class GameManager : MonoBehaviour
 
     public GameStates currentGameState;
 
+    public Player RoundWinner => _lastWinner;
+
     // private:
+
+    [SerializeField] private int scoreToWin;
     
     private Timer _timer;
     private UIManager _ui;
@@ -65,24 +74,35 @@ public class GameManager : MonoBehaviour
     public delegate void GameWonHandler();
     public static event GameWonHandler OnGameWon;
 
+    private void OnEnable()
+    {
+        OnRoundWon += RoundIsOver;
+        OnRoundOver += RoundIsOver;
+    }
+
+    private void OnDisable()
+    {
+        OnRoundWon -= RoundIsOver;
+        OnRoundOver -= RoundIsOver;
+    }
+
     public static void GameWon()
     {
         OnGameWon?.Invoke();
     }
 
-    public static void MatchOver()
+    public static void RoundOver()
     {
         OnRoundOver?.Invoke();
     }
 
-    public static void MatchWon()
+    public static void RoundWon()
     {
         OnRoundWon?.Invoke();
     }
 
     #endregion
     
-    // Start is called before the first frame update
     private void Start()
     {
         _timer = GetComponent<Timer>();
@@ -91,28 +111,21 @@ public class GameManager : MonoBehaviour
 
         _availableLevels = _level.levels;
 
+        //_lastWinner = PlayerManager.Instance.players[0];
+        
         currentGameState = GameStates.Menu;
     }
 
     public void Play()
     {
-        _ui.ResetPlayerScores();
+        //_ui.ResetPlayerScores();
 
         currentGameState = GameStates.Playing;
         
-        StartMatch();
+        NewRound();
     }
 
-    private void StartMatch()
-    {
-        GetRandomLevel();
-        
-        StopAllCoroutines();
-
-        StartCoroutine(CountDown());
-    }
-    
-    private void GetRandomLevel()
+    private void LoadRandomLevel()
     {
         // If there aren't any available levels, add all levels back to the list
         if (_availableLevels.Count == 0) _availableLevels = _level.levels;
@@ -130,28 +143,78 @@ public class GameManager : MonoBehaviour
 
     public void MatchWinner(Player player) => _lastWinner = player;
 
-    public Player CheckGameWon() => PlayerManager.Instance.players.FirstOrDefault(p => p.Wins >= 12);
-
-    private IEnumerator MatchIsOver()
+    private bool CheckGameWon()
     {
-        Time.timeScale = 0.5f;
-        
-        yield return new WaitForSecondsRealtime(3);
-
-        if (CheckGameWon() != null)
+        foreach (var p in PlayerManager.Instance.players)
         {
-            GameWon();
-            yield break;
+            if (p.Wins == scoreToWin)
+            {
+                return true;
+            }
         }
-        
-        
 
+        return false;
+    }
+
+    #region Async Tasks
+
+    private async void RoundIsOver()
+    {
+        // Slow down time at the end like Stick Fight
+        await SlowTime();
+
+        // Prepare new round
+        await NewRound();
+    }
+
+    private async Task NewRound()
+    {
+        // Do the level transition animation
+        await DoLevelTransitionAnimation();
+        
+        // Wait half a second
+        await Task.Delay(500);
+        
+        // At this point we are right in the middle of the transition
+        // Now is the time to load levels and do any other necessary checks
+        
+        // Set time to 1x (normal) speed
+        Time.timeScale = 1f;
+
+        // Turn off win text
+        UIManager.Instance.winCanvas.gameObject.SetActive(false);
+        
+        print("NOW");
+        
+        // Load a random level
+        LoadRandomLevel();
+
+        // Check if a player has won the game
+        if (!CheckGameWon()) return;
+        
+        // setup winner stuff
+
+        GameWon();
     }
     
-    private static IEnumerator CountDown(int duration = 3)
+    internal static async Task SlowTime()
     {
-        yield break;
+        // Slow time to 0.5x speed
+        Time.timeScale = 0.5f;
+        
+        // Wait 3 seconds (realtime)
+        await Task.Delay(2000);
     }
+    
+    internal async Task DoLevelTransitionAnimation()
+    {
+        _ui.fadePanels[0].GetComponent<Animation>().Play();
+        _ui.fadePanels[1].GetComponent<Animation>().Play();
+        
+        await Task.Yield();
+    }
+
+    #endregion
     
     public static void PauseGame()
     {
