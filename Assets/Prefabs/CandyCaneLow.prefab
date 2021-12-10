@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3688350857297429829}
   - component: {fileID: 324395535802272480}
   - component: {fileID: 2550316449883717162}
+  - component: {fileID: -7412707268822901059}
   m_Layer: 0
   m_Name: CandyCaneLow
   m_TagString: Untagged
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-7412707268822901059
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4063503866506305535}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 19.759836, y: 170.59006, z: 67.624054}
+  m_Center: {x: 0.00000093290726, y: 84.591064, z: 23.93211}
