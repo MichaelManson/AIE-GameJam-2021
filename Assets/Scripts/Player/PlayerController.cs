@@ -23,6 +23,10 @@ public class PlayerController : MonoBehaviour
 
     [Header("Combat")]
     public float damage = 5.0f;
+    private float meleeTimer = 0.0f;
+    [Tooltip("The amount of delays required between melee attacks")] [SerializeField] 
+    private float meleeRate = 0.5f;
+    public bool CanMelee { get; set; }
 
     public bool IsGrounded { get; set; }
 
@@ -41,6 +45,8 @@ public class PlayerController : MonoBehaviour
     {
         // Default isGrounded check to true
         IsGrounded = true;
+        CanMelee = true;
+        meleeTimer = meleeRate;
 
         Hips = hips;
     }
@@ -50,6 +56,8 @@ public class PlayerController : MonoBehaviour
         // Update animation states
         anim.SetFloat("MoveX", Mathf.Abs(moveInput.x));
         anim.SetBool("Grounded", IsGrounded);
+
+        meleeTimer += Time.deltaTime;
     }
 
     private void FixedUpdate()
@@ -110,9 +118,17 @@ public class PlayerController : MonoBehaviour
 
     public void OnMelee(InputAction.CallbackContext context)
     {
-        anim.SetTrigger("Melee");
+        // If the player can melee
+        if ((meleeTimer >= meleeRate))
+        {
+            meleeTimer = 0.0f;
 
-        // Adds a force on melee
-        hips.AddForce(hips.transform.right * meleeForce);
+            CanMelee = true;
+
+            anim.SetTrigger("Melee");
+
+            // Adds a force on melee
+            hips.AddForce(hips.transform.right * meleeForce);
+        }
     }
 }
