@@ -219,11 +219,7 @@ public class GameManager : MonoBehaviour
         
         // Do the level transition animation
         await DoLevelTransitionAnimation();
-        
-        // Wait half a second
-        await Task.Delay(500);
-        
-        
+
         // At this point we are right in the middle of the transition
         // Now is the time to load levels and do any other necessary checks
 
@@ -301,10 +297,14 @@ public class GameManager : MonoBehaviour
     
     internal async Task DoLevelTransitionAnimation()
     {
+        // Make sure game is running at normal speed
+        Time.timeScale = 1f;
+        
         _ui.fadePanels[0].GetComponent<Animation>().Play();
         _ui.fadePanels[1].GetComponent<Animation>().Play();
         
-        await Task.Yield();
+        // Wait half a second
+        await Task.Delay(500);
     }
 
     internal async Task Countdown()

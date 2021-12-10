@@ -17,36 +17,36 @@ namespace CookieClash
             Instance = this;
         }
 
-        public void LoadMainMenu()
+        public async void LoadMainMenu()
         {
-            _scene.LoadScene(sceneBuildIndex: 0);
+            // Do the cool transition
+            await GameManager.Instance.DoLevelTransitionAnimation();
             
+            _scene.LoadScene(sceneBuildIndex: 0);
         }
 
         public async void LoadLobby()
         {
-            // Make sure game is running at normal speed
-            Time.timeScale = 1f;
-            
+            // Do the cool transition
+            await GameManager.Instance.DoLevelTransitionAnimation();
+
+            _scene.LoadScene(sceneBuildIndex: 1);
+        }
+
+        public async void LoadGame()
+        {
             // Do the cool transition
             await GameManager.Instance.DoLevelTransitionAnimation();
             
-            await Task.Delay(500);
-
-            _scene.LoadScene(sceneBuildIndex: 1);
-
-        }
-
-        public void LoadGame()
-        {
             _scene.LoadScene(sceneBuildIndex: 2);
-
         }
 
-        public void LoadEndGame()
+        public async void LoadEndGame()
         {
+            // Do the cool transition
+            await GameManager.Instance.DoLevelTransitionAnimation();
+            
             _scene.LoadScene(sceneBuildIndex: 3);
-
         }
     }
 }
