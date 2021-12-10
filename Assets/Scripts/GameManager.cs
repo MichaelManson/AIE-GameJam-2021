@@ -242,7 +242,7 @@ public class GameManager : MonoBehaviour
 
     // ReSharper disable Unity.PerformanceAnalysis
     public async Task NewRound(bool startRound = false)
-    {
+    { 
         // Set time to 1x (normal) speed
         Time.timeScale = 1f;
         

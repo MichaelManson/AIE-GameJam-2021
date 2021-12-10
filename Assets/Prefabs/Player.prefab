@@ -589,7 +589,7 @@ BoxCollider:
   m_GameObject: {fileID: 474714279326600341}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
   m_Center: {x: 0.0000000018626451, y: 0.00000011920929, z: 0}
@@ -6209,11 +6209,11 @@ PrefabInstance:
     - target: {fileID: 140722729157138564, guid: 1e88d567e2b5fcc4ca76986fafee482f, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 4cfac516fe9a12e4ab529e00b0959fbe, type: 2}
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 140722729157138564, guid: 1e88d567e2b5fcc4ca76986fafee482f, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 3254038529743948973, guid: 4cfac516fe9a12e4ab529e00b0959fbe, type: 2}
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 346672745388252934, guid: 1e88d567e2b5fcc4ca76986fafee482f, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
