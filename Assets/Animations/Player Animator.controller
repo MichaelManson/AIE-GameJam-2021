@@ -148,10 +148,10 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.25000003
   m_TransitionOffset: 0
-  m_ExitTime: 0.53125
-  m_HasExitTime: 1
+  m_ExitTime: 0
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -189,7 +189,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Jump
-  m_Speed: 1
+  m_Speed: 4
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 567106568509994184}
@@ -276,7 +276,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Flying Kick
-  m_Speed: 1
+  m_Speed: 2.1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1726654374437253252}
@@ -304,7 +304,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Melee
-  m_Speed: 1
+  m_Speed: 2.1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 8195547057161144378}
@@ -435,6 +435,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Melee
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: Grounded
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2465820950709261692}
   m_Solo: 0
@@ -491,9 +494,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.24999996
+  m_TransitionDuration: 0.1
   m_TransitionOffset: 0
-  m_ExitTime: 0.004348235
+  m_ExitTime: 0
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -516,7 +519,7 @@ AnimatorStateMachine:
     m_Position: {x: 650, y: 380, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2787712389643064329}
-    m_Position: {x: 530, y: 620, z: 0}
+    m_Position: {x: 520, y: 620, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3055665180302872660}
     m_Position: {x: 320, y: 180, z: 0}

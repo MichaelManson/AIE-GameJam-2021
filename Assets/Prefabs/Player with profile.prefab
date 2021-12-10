@@ -2696,9 +2696,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerConfig: {fileID: 8389858134888082377, guid: 31e3fff772ebcb54e9855d67b0b332d0, type: 3}
   anim: {fileID: 0}
+  maxSpeed: 5
   speed: 125
   airSpeed: 75
   jumpForce: 2000
+  meleeForce: 200
   hips: {fileID: 474714279424395398}
   meleeCollision: {fileID: 474714279326600341}
   hipJoint: {fileID: 474714279424395403}

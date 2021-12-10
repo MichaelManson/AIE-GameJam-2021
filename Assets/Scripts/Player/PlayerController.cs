@@ -9,9 +9,14 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Animator anim;
 
+    [Tooltip("What is the cap speed of player's horizontal speed")] [SerializeField] 
+    private float maxSpeed = 5.0f;
     [SerializeField] private float speed = 1.0f;
     [SerializeField] private float airSpeed = 1.0f;
     [SerializeField] private float jumpForce = 1.0f;
+
+    [Tooltip("The amount of force applied on the character when they melee")]
+    [SerializeField] private float meleeForce = 25.0f;
 
     public Rigidbody Hips { get; set; }
     [SerializeField] private Rigidbody hips;
@@ -63,18 +68,13 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("IN AIR");
                 hips.AddForce(velocity * airSpeed);
-
-                //currentSpeed = airSpeed;
             }
             else
             {
                 Debug.Log("ON GROUND");
                 hips.AddForce(velocity * speed);
-
-                //currentSpeed = speed;
             }
         }
-
 
         if(hasJumped && IsGrounded && PlayerManager.CanJump)
         {
@@ -84,11 +84,15 @@ public class PlayerController : MonoBehaviour
             IsGrounded = false;
 
             hasJumped = false;
-
-            //velocity.y += jumpForce;
-
         }
-        //hips.velocity = velocity * currentSpeed * Time.deltaTime;
+
+        // Clamps player's horizotal speed
+        float controlledXVelocity = Mathf.Clamp(hips.velocity.x, -maxSpeed, maxSpeed);
+        Vector3 currentVelocity = hips.velocity;
+        currentVelocity.x = controlledXVelocity;
+        hips.velocity = currentVelocity;
+
+        Debug.Log("VECLOTIY: " + hips.velocity);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -106,6 +110,9 @@ public class PlayerController : MonoBehaviour
     {
         StartCoroutine(ActiveMeleeCollision());
         anim.SetTrigger("Melee");
+
+        // Adds a force on melee
+        hips.AddForce(hips.transform.right * meleeForce);
     }
 
     /// <summary>
@@ -127,6 +134,24 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
+        meleeCollision.SetActive(false);
+    }
+
+    /// <summary>
+    /// Unity animation event. 
+    /// Enables the melee box
+    /// </summary>   
+    public void EnableAttack()
+    {
+        meleeCollision.SetActive(true);
+    }
+
+    /// <summary>
+    /// Unity animation event. 
+    /// Disables the melee box
+    /// </summary>
+    public void DisableAttack()
+    {
         meleeCollision.SetActive(false);
     }
 }
