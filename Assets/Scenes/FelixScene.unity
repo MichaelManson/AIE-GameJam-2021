@@ -317,7 +317,7 @@ PrefabInstance:
       objectReference: {fileID: 8855009609845894086, guid: 711574a029dfd1641aee441a9c240f9e, type: 3}
     - target: {fileID: 431235356943910021, guid: 54373c71468530340a7c6d7fdca1e4c5, type: 3}
       propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 431235356943910021, guid: 54373c71468530340a7c6d7fdca1e4c5, type: 3}
       propertyPath: m_PlayerPrefab
@@ -328,12 +328,24 @@ PrefabInstance:
       value: 2c24ce28-c5d1-4a0b-8c7d-4957a3eca267
       objectReference: {fileID: 0}
     - target: {fileID: 431235356943910021, guid: 54373c71468530340a7c6d7fdca1e4c5, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <Keyboard>/enter
+      objectReference: {fileID: 0}
+    - target: {fileID: 431235356943910021, guid: 54373c71468530340a7c6d7fdca1e4c5, type: 3}
       propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[1].m_Action
       value: Join
       objectReference: {fileID: 0}
     - target: {fileID: 431235356943910021, guid: 54373c71468530340a7c6d7fdca1e4c5, type: 3}
-      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[1].m_Path
-      value: <Keyboard>/enter
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[2].m_Id
+      value: 891e81d6-e769-4eaf-aa09-bf6e5d97ee0e
+      objectReference: {fileID: 0}
+    - target: {fileID: 431235356943910021, guid: 54373c71468530340a7c6d7fdca1e4c5, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[2].m_Action
+      value: Join
+      objectReference: {fileID: 0}
+    - target: {fileID: 431235356943910021, guid: 54373c71468530340a7c6d7fdca1e4c5, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[2].m_Path
+      value: <Keyboard>/p
       objectReference: {fileID: 0}
     - target: {fileID: 431235356943910024, guid: 54373c71468530340a7c6d7fdca1e4c5, type: 3}
       propertyPath: m_Name

@@ -35,6 +35,8 @@ public class PlayerConfigManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        
+        //SpawnPlayerProfile(playerProfilePrefab.AddComponent<PlayerInput>());
     }
 
     private void Start()
@@ -138,8 +140,8 @@ public class PlayerConfigManager : MonoBehaviour
         Debug.Log("All players ready. Proceed!");
 
         Reset();
-
-        SceneManager.LoadGame();
+        
+        GameManager.Instance.NewRound(true);
     }
 
     private void Reset()

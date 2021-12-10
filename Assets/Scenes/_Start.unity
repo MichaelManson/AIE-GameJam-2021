@@ -864,6 +864,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4730354698485323512, guid: 583133f3999c54245a24d8ef6e64fd38, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730354698485323512, guid: 583133f3999c54245a24d8ef6e64fd38, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730354698485323512, guid: 583133f3999c54245a24d8ef6e64fd38, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730354698485323512, guid: 583133f3999c54245a24d8ef6e64fd38, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 583133f3999c54245a24d8ef6e64fd38, type: 3}
 --- !u!114 &1380356199 stripped
@@ -1154,7 +1170,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8cc753bac04f88f48bc5e63ab7241b32, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4363fda0edffc744484abbcc1207fc83, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
