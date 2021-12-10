@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3039222755712840531}
   - component: {fileID: 2426049376448859207}
   - component: {fileID: -3230687677591078084}
+  - component: {fileID: 8302616776292951931}
   m_Layer: 0
   m_Name: PresentCube_Low
   m_TagString: Untagged
@@ -95,3 +96,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 268.8522, y: 269.38635, z: 268.8522}
   m_Center: {x: 0, y: -39.644493, z: 0}
+--- !u!54 &8302616776292951931
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4659295158097469607}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 8
+  m_CollisionDetection: 0
