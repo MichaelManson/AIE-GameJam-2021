@@ -295,7 +295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentPlayers: 0
   currentGameState: 0
-  scoreToWin: 12
+  scoreToWin: 5
   _timer: {fileID: 0}
 --- !u!114 &2364413978057607388
 MonoBehaviour:

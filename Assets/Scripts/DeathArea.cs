@@ -7,6 +7,10 @@ public class DeathArea : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!GameManager.watchForDeath) return;
+
+        GameManager.watchForDeath = false;
+        
         print("hit" + other.gameObject.name + ", " + other.gameObject.layer + ", " + GameManager.roundWon);
         
         if (GameManager.roundWon) return;

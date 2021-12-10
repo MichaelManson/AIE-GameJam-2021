@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
 
     public static bool roundWon = false;
 
+    public static bool watchForDeath = false;
+
     public LevelManager.LevelObjectiveType CurrentLevelObjectiveType => _level.currentLevel.levelObjectiveType;
 
     // private:
@@ -141,6 +143,8 @@ public class GameManager : MonoBehaviour
         // Spawn every player at the appropriate position
         foreach (var player in players)
         {
+            print(players.Count);
+        
             // Revive the player
             player.GetComponent<Health>().Revive();           
 
@@ -205,6 +209,8 @@ public class GameManager : MonoBehaviour
         // Loop through every player in the game
         foreach (var p in PlayerManager.Instance.players)
         {
+            print(p.Wins + ", " + scoreToWin);
+            
             // If one of them has the win score
             if (p.Wins == scoreToWin)
             {
@@ -270,9 +276,16 @@ public class GameManager : MonoBehaviour
         
         _ui.HUDCanvas.gameObject.SetActive(true);
 
+        PlayerManager.Instance.ResetPlayers();
+
         await Task.Delay(100);
 
-        PlayerManager.Instance.activePlayers = new List<Player>(PlayerManager.Instance.players);
+        PlayerManager.Instance.activePlayers = new List<Player>();
+
+        foreach (var p in PlayerManager.Instance.players)
+        {
+            PlayerManager.Instance.activePlayers.Add(p);
+        }
 
         // Turn off win text
         UIManager.Instance.winText.gameObject.SetActive(false);
@@ -285,6 +298,8 @@ public class GameManager : MonoBehaviour
 
             // Load up the podium
             SceneManager.LoadEndGame();
+
+            _ui.timerText.text = "";
 
             await Task.Delay(100);
 
@@ -323,6 +338,8 @@ public class GameManager : MonoBehaviour
         
         await Task.Delay(1000);
 
+        watchForDeath = true;
+        
         RoundStarted = true;
 
         // Get rid of countdown text
