@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/_Start.unity
     guid: 74f47c6bd11e7a14ab2f8a4353e5a2ba
   - enabled: 1
-    path: Assets/Scenes/FelixScene 1.unity
-    guid: 665e973cd48b70646916ec4348715b7c
+    path: Assets/Scenes/FelixScene.unity
+    guid: 0116b67bb42fd7d49b7ed45c8e1e5ab4
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 844f56879cfbecc45a8bf9ad9dde730a

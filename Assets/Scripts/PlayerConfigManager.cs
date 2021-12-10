@@ -17,7 +17,9 @@ public class PlayerConfigManager : MonoBehaviour
 
     [SerializeField] private Canvas canvas;
 
-    [SerializeField] private Timer timer;
+    [SerializeField] private LobbyTimer timer;
+
+    public GameObject[] playerHats;
 
     public Transform[] points;
 
@@ -33,6 +35,8 @@ public class PlayerConfigManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        
+        //SpawnPlayerProfile(playerProfilePrefab.AddComponent<PlayerInput>());
     }
 
     private void Start()
@@ -46,14 +50,17 @@ public class PlayerConfigManager : MonoBehaviour
         input.transform.parent = null;
         input.transform.position = points[count].position;
 
-        // Set up the player's layer
-        input.transform.GetComponent<PlayerSetUp>().SetLayers(layers[count]);
+        PlayerConfig player = input.GetComponent<PlayerConfig>();
+
+        // Set up the player's layers
+        PlayerSetUp playerSetup = input.transform.GetComponent<PlayerSetUp>();
+        playerSetup.SetLayers(layers[count]);
 
         count++;
 
-        PlayerConfig player = input.GetComponent<PlayerConfig>();
         player.PlayerId = count;
         SetUpPlayerInfo(player);
+        playerSetup.SetHat(player);
 
         Debug.Log("Player id: " + player.PlayerId);
 
@@ -128,13 +135,13 @@ public class PlayerConfigManager : MonoBehaviour
     {
         timer.BeginTimer(lobbyWaitTime);
 
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(lobbyWaitTime);
 
         Debug.Log("All players ready. Proceed!");
 
         Reset();
 
-        SceneManager.LoadGame();
+        GameManager.Instance.NewRound(true);
     }
 
     private void Reset()

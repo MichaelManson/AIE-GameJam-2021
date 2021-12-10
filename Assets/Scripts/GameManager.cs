@@ -135,6 +135,9 @@ public class GameManager : MonoBehaviour
         // Spawn every player at the appropriate position
         foreach (var player in players)
         {
+            // Revive the player
+            player.GetComponent<Health>().Revive();           
+
             // Turn the player on
             player.gameObject.SetActive(true);
             
@@ -208,17 +211,29 @@ public class GameManager : MonoBehaviour
 
     #region Async Tasks
 
-    private async void RoundIsOver()
+    public async void RoundIsOver()
     {
+        print("Round is now over!");
+        
         // Slow down time at the end like Stick Fight
         await SlowTime();
+
+        // Turn the win msg on
+        _ui.winText.gameObject.SetActive(true);
+        
+        // Change the win text depending on if someone won
+        _ui.winText.text = RoundWinner != null ? 
+            // If someone did win, display that
+            "Player " + RoundWinner.PlayerNumber + " is the winner!" : 
+            // Else say Round Over
+            "Round Over...";
 
         // Prepare new round
         await NewRound();
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
-    private async Task NewRound(bool startRound = false)
+    public async Task NewRound(bool startRound = false)
     {
         // Set time to 1x (normal) speed
         Time.timeScale = 1f;
@@ -231,6 +246,8 @@ public class GameManager : MonoBehaviour
         
         // Load the game scene if it's the first round
         if (startRound) SceneManager.LoadGame();
+
+        _lastWinner = null;
         
         _ui.HUDCanvas.gameObject.SetActive(true);
 

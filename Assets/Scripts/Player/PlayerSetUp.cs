@@ -13,6 +13,8 @@ public class PlayerSetUp : MonoBehaviour
 
     [SerializeField] private Transform ragdollGroup;
 
+    [SerializeField] private Transform hatPlacement;
+
     public void SetLayers(string layer)
     {
         playerParts = new List<Transform>();
@@ -24,5 +26,17 @@ public class PlayerSetUp : MonoBehaviour
         {
             playerParts[i].gameObject.layer = LayerMask.NameToLayer(layer);
         }
+    }
+
+    public void SetHat(PlayerConfig player)
+    {
+        Debug.Log("PLAYER ID: " + player.PlayerId);
+
+        // Spawn a hat
+        GameObject hat = Instantiate(PlayerConfigManager.Instance.playerHats[player.PlayerId - 1]);
+
+        // Position the hat on top of the player's head
+        hat.transform.parent = hatPlacement;
+        hat.transform.localPosition = Vector3.zero;
     }
 }
