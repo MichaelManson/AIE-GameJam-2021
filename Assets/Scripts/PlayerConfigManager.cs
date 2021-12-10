@@ -19,6 +19,8 @@ public class PlayerConfigManager : MonoBehaviour
 
     [SerializeField] private Timer timer;
 
+    public GameObject[] playerHats;
+
     public Transform[] points;
 
     private List<PlayerConfig> playersJoined = new List<PlayerConfig>();
@@ -48,14 +50,17 @@ public class PlayerConfigManager : MonoBehaviour
         input.transform.parent = null;
         input.transform.position = points[count].position;
 
-        // Set up the player's layer
-        input.transform.GetComponent<PlayerSetUp>().SetLayers(layers[count]);
+        PlayerConfig player = input.GetComponent<PlayerConfig>();
+
+        // Set up the player's layers
+        PlayerSetUp playerSetup = input.transform.GetComponent<PlayerSetUp>();
+        playerSetup.SetLayers(layers[count]);
 
         count++;
 
-        PlayerConfig player = input.GetComponent<PlayerConfig>();
         player.PlayerId = count;
         SetUpPlayerInfo(player);
+        playerSetup.SetHat(player);
 
         Debug.Log("Player id: " + player.PlayerId);
 
