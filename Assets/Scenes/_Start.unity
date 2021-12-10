@@ -160,7 +160,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -373, y: 283.1}
+  m_AnchoredPosition: {x: 464, y: 414.10004}
   m_SizeDelta: {x: 354.279, y: 83.49711}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &97062402
@@ -294,7 +294,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -373, y: 145}
+  m_AnchoredPosition: {x: 464, y: 276}
   m_SizeDelta: {x: 354.279, y: 83.49711}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &221150341
@@ -412,8 +412,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15.6, y: 356}
-  m_SizeDelta: {x: 1822.1475, y: 283.69803}
+  m_AnchoredPosition: {x: -602, y: 351.5}
+  m_SizeDelta: {x: 604.87463, y: 274.71213}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &267117464
 MonoBehaviour:
@@ -435,7 +435,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: CHRISTMAS COOKIE CLASH
+  m_text: "CHRISTMAS \nCOOKIE \nCLASH"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4cfac516fe9a12e4ab529e00b0959fbe, type: 2}
   m_sharedMaterial: {fileID: 3254038529743948973, guid: 4cfac516fe9a12e4ab529e00b0959fbe, type: 2}
@@ -469,7 +469,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1089,7 +1089,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 47c24fce5c69e874cb765dbeb0622fd1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8cc753bac04f88f48bc5e63ab7241b32, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
