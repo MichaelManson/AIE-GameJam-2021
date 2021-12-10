@@ -15,4 +15,4 @@ MonoBehaviour:
   levelGeo: {fileID: 8233961439673577244, guid: c3803fb897537d843808cb7c16f6e042, type: 3}
   previewImage: {fileID: 0}
   levelObjectiveType: 0
-  objectiveDescription: Survive!
+  objectiveDescription: Last Gingerbread man standing wins!
