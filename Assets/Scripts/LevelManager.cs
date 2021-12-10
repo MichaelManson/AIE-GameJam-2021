@@ -7,7 +7,7 @@ public class LevelManager : MonoBehaviour
     public enum LevelObjectiveType
     {
         Deathmatch,
-        Race,
+        CollectObject,
             
     }
     
