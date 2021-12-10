@@ -8,8 +8,15 @@ public class RoofTiles : MonoBehaviour
     BoxCollider _collider;
     public bool steppedOn = false;
 
+    private string[] layers = { "Player1", "Player2", "Player3", "Player4" };
+
+    LayerMask layerMask;
+
     private void OnEnable()
     {
+        // Set up layerMask
+        layerMask = LayerMask.GetMask(layers);     
+        
         rb = GetComponent<Rigidbody>();
         _collider = GetComponent<BoxCollider>();
     }
@@ -27,17 +34,20 @@ public class RoofTiles : MonoBehaviour
      
     private void OnCollisionEnter(Collision collision)
     {
-        // If the round hasn't started...
-        if (GameManager.Instance.RoundStarted)
+        // Check if player hit the roof...
+        if ((layerMask.value & (1 << collision.gameObject.layer)) > 0)
         {
-            StartCoroutine(DropTile());
+            // If the round hasn't started...
+            if (GameManager.Instance.RoundStarted)
+            {
+                StartCoroutine(DropTile());
+            }
+            // Delay the drop
+            else
+            {
+                StartCoroutine(DropTileAtStart());
+            }
         }
-        // Delay the drop
-        else
-        {
-            StartCoroutine(DropTileAtStart());
-        }
-        
     }
 
     IEnumerator DropTile()

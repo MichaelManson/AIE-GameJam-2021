@@ -94,6 +94,8 @@ public class UIManager : MonoBehaviour
 
             scoreText.text = "";
             scoreText.text += wins > 9 ? "" + wins : "0" + wins;
+
+            Debug.Log(scoreText.color);
         }
     }
     
