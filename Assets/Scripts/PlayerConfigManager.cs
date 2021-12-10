@@ -133,7 +133,7 @@ public class PlayerConfigManager : MonoBehaviour
 
         Reset();
 
-        GameManager.Instance.Play();
+        CookieClash.SceneManager.Instance.LoadGame();
     }
 
     private void Reset()

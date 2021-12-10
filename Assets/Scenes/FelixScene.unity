@@ -419,6 +419,10 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 930399423}
+    - target: {fileID: 431235356943910020, guid: 54373c71468530340a7c6d7fdca1e4c5, type: 3}
+      propertyPath: timer
+      value: 
+      objectReference: {fileID: 778874525}
     - target: {fileID: 431235356943910021, guid: 54373c71468530340a7c6d7fdca1e4c5, type: 3}
       propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.size
       value: 2
