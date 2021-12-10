@@ -579,7 +579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10c376f7c72277c479113928eddfe02e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackForce: 8000
+  knockbackForce: 5000
 --- !u!65 &474714279326600342
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6190,13 +6190,21 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 140722729157138564, guid: 1e88d567e2b5fcc4ca76986fafee482f, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 4cfac516fe9a12e4ab529e00b0959fbe, type: 2}
+    - target: {fileID: 140722729157138564, guid: 1e88d567e2b5fcc4ca76986fafee482f, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3254038529743948973, guid: 4cfac516fe9a12e4ab529e00b0959fbe, type: 2}
     - target: {fileID: 346672745388252934, guid: 1e88d567e2b5fcc4ca76986fafee482f, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 346672745388252934, guid: 1e88d567e2b5fcc4ca76986fafee482f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.22
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 346672745388252934, guid: 1e88d567e2b5fcc4ca76986fafee482f, type: 3}
       propertyPath: m_SizeDelta.x
