@@ -49,6 +49,8 @@ public class Health : MonoBehaviour
 
     public void Revive()
     {
+        health = maxHealth;
+
         // Enable player movement, so they can move
         playerController.enabled = true;
 
