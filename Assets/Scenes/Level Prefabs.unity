@@ -2974,6 +2974,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snow
       objectReference: {fileID: 0}
+    - target: {fileID: 3506845941684484268, guid: f52b2d50ca7a39b4ca82c9d55be6266e, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3506845941684484268, guid: f52b2d50ca7a39b4ca82c9d55be6266e, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3506845941684484269, guid: f52b2d50ca7a39b4ca82c9d55be6266e, type: 3}
+      propertyPath: m_MaxParticleSize
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3506845941684484271, guid: f52b2d50ca7a39b4ca82c9d55be6266e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
