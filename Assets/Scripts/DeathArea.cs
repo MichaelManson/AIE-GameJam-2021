@@ -46,7 +46,7 @@ public class DeathArea : MonoBehaviour
         if (PlayerManager.Instance.activePlayers.Count != 1) return;
             
         // Tell the game that the last remaining player is the winner
-        GameManager.Instance.MatchWinner(PlayerManager.Instance.activePlayers[p.PlayerNumber - 2]);
+        GameManager.Instance.MatchWinner(PlayerManager.Instance.activePlayers[0]);
         
         GameManager.Instance.RoundIsOver();
         
