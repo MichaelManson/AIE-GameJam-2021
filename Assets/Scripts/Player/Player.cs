@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
 
     public int Wins { get; set; }
     public int PlayerNumber { get; set; }
+    
+    public bool Dead { get; set; }
 
     public Rigidbody center;
 
@@ -45,15 +47,42 @@ public class Player : MonoBehaviour
         PlayerManager.Instance.RemovePlayer(this);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    /*private void OnCollisionEnter(Collision collision)
     {
-        // ReSharper disable once Unity.UnknownLayer
-        if (collision.gameObject.layer != LayerMask.NameToLayer("Goal")) return;
-
-        // Increase the amount of wins this player has
-        Wins++;
+        print("hit" + collision.gameObject.name);
         
-        GameManager.Instance.MatchWinner(this);
-        GameManager.RoundWon();
-    }
+        if (collision.gameObject.layer == LayerMask.NameToLayer($"Goal"))
+        {
+            // Increase the amount of wins this player has
+            Wins++;
+        
+            GameManager.Instance.MatchWinner(this);
+            GameManager.RoundWon();
+        }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer($"Death"))
+        {
+            print("death");
+            
+            if (GameManager.roundWon) return;
+            
+            // Set this player to be 'dead'
+            Dead = true;
+
+            // Remove the dead player from the list of active players
+            PlayerManager.Instance.activePlayers.Remove(this);
+            
+            // Turn the gameObject off
+            gameObject.SetActive(false);
+            
+            // Check if round has been won
+            if (PlayerManager.Instance.activePlayers.Count == 1)
+            {
+                // Tell the game that the last remaining player is the winner
+                GameManager.Instance.MatchWinner(PlayerManager.Instance.activePlayers[0]);
+                GameManager.roundWon = true;
+                
+            }
+        }
+        
+    }*/
 }

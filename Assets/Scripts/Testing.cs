@@ -13,7 +13,7 @@ public class Testing : MonoBehaviour
     private async void SpawnPlayers()
     {
         var p = Instantiate(playerTestPrefab, Vector3.zero, Quaternion.identity).GetComponent<Player>();
-        p.Wins = 12;
+        //p.Wins = 12;
 
         await Task.Delay(500);
         

@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
 
     public Player RoundWinner => _lastWinner;
 
+    public static bool roundWon = false;
+
     // private:
 
     [SerializeField] private int scoreToWin;
@@ -128,6 +130,9 @@ public class GameManager : MonoBehaviour
         // Spawn every player at the appropriate position
         foreach (var player in players)
         {
+            // Turn the player on
+            player.gameObject.SetActive(true);
+            
             // Turn on kinematic, so all forces are removed from player
             player.center.isKinematic = true;
 
@@ -136,11 +141,14 @@ public class GameManager : MonoBehaviour
             player.center.transform.position = spawnLocations[player.PlayerNumber].transform.position;
             player.center.velocity = Vector3.zero;
             
-            print(player.center.transform.position + ", " + 
-                  spawnLocations[player.PlayerNumber].transform.position);
+            //print(player.center.transform.position + ", " + 
+                  //spawnLocations[player.PlayerNumber].transform.position);
         }
     }
     
+    /// <summary>
+    /// Makes all players able to move freely. (Rigidbody set to non-kinematic)
+    /// </summary>
     private static void ResetForcesOnPlayers()
     {
         foreach (var player in PlayerManager.Instance.players)
@@ -214,46 +222,67 @@ public class GameManager : MonoBehaviour
         
         // At this point we are right in the middle of the transition
         // Now is the time to load levels and do any other necessary checks
+
+        PlayerManager.Instance.activePlayers = new List<Player>(PlayerManager.Instance.players);
         
 
         // Turn off win text
         UIManager.Instance.winText.gameObject.SetActive(false);
 
-        // Load a random level
-        LoadRandomLevel();
-
-        await Task.Delay(100);
-        
-        // Spawn all the characters in the right spot
-        SpawnCharacters(PlayerManager.Instance.players);
-
         // Check if a player has won the game
         if (CheckGameWon())
         {
+            // Tell the world that the game has been won
             GameWon();
 
+            // Load up the podium
             _level.LoadWinLevel();
+
+            await Task.Delay(100);
             
+            // Spawn characters on the podium in order
             SpawnCharacters(PlayerManager.Instance.GetPlayersOrderedByScore());
             
+            // Make all players physics objects
             ResetForcesOnPlayers();
 
+            // Restrict player sideways movement
             PlayerManager.CanMove = false;
             
             return;
         }
+        else
+        {
+            // Load a random level
+            LoadRandomLevel();
+            
+            // Show the objective of the current level
+            _ui.objectiveText.text = "Objective: " + _level.currentLevel.objectiveDescription;
+
+            await Task.Delay(100);
+        
+            // Spawn all the characters in the right spot
+            SpawnCharacters(PlayerManager.Instance.players);
+        }
 
         await Task.Delay(2000);
         
+        // Begin Round Countdown
         await Countdown();
         
+        // Make all player Physics objects
         ResetForcesOnPlayers();
         
         await Task.Delay(1000);
 
+        // Get rid of countdown text
         _ui.countdownText.GetComponent<Animation>().Stop();
         _ui.countdownText.text = "";
         
+        // Turn off the objective text
+        _ui.objectiveText.text = "";
+
+        // Begin Round Timer
         _timer.BeginTimer(30);
     }
     
