@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using CookieClash;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -133,7 +134,7 @@ public class PlayerConfigManager : MonoBehaviour
 
         Reset();
 
-        CookieClash.SceneManager.Instance.LoadGame();
+        SceneManager.LoadGame();
     }
 
     private void Reset()

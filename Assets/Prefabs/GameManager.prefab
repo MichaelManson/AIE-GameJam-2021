@@ -206,7 +206,7 @@ MonoBehaviour:
   levelImages: []
   timerText: {fileID: 5808650603104647367}
   winText: {fileID: 4730354699183293047}
-  countdownText: {fileID: 0}
+  countdownText: {fileID: 6176254214036962869}
   objectiveText: {fileID: 4730354699183293047}
   fadePanels:
   - {fileID: 836072638805334939}
@@ -368,6 +368,22 @@ MonoBehaviour:
   m_TrackedDeviceOrientationAction: {fileID: 1025543830046995696, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
+--- !u!111 &8840349599970091372
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4769768910704159914}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 1a6a95bc05f7a8948a8e150f81aac74b, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 1a6a95bc05f7a8948a8e150f81aac74b, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &420234220797111732
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -486,10 +502,14 @@ PrefabInstance:
     - target: {fileID: 1030949857549302864, guid: 8e88e04411b0ef44ca4ce9759dc821e8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2364413978057607387}
     - target: {fileID: 1030949857549302864, guid: 8e88e04411b0ef44ca4ce9759dc821e8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030949857549302864, guid: 8e88e04411b0ef44ca4ce9759dc821e8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1030949857549302879, guid: 8e88e04411b0ef44ca4ce9759dc821e8, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -732,6 +752,22 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 4336825931487066495}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &4769768910704159914 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9087735975458903509, guid: ff07b4d798d7a924db9d32102893a8b0, type: 3}
+  m_PrefabInstance: {fileID: 4336825931487066495}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6176254214036962869 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7609383839027398474, guid: ff07b4d798d7a924db9d32102893a8b0, type: 3}
+  m_PrefabInstance: {fileID: 4336825931487066495}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4769768910704159914}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}

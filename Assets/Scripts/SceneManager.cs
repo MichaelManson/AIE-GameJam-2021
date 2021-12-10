@@ -33,19 +33,13 @@ namespace CookieClash
             _scene.LoadScene(sceneBuildIndex: 1);
         }
 
-        public async void LoadGame()
+        public static void LoadGame()
         {
-            // Do the cool transition
-            await GameManager.Instance.DoLevelTransitionAnimation();
-            
             _scene.LoadScene(sceneBuildIndex: 2);
         }
 
-        public async void LoadEndGame()
+        public static void LoadEndGame()
         {
-            // Do the cool transition
-            await GameManager.Instance.DoLevelTransitionAnimation();
-            
             _scene.LoadScene(sceneBuildIndex: 3);
         }
     }
