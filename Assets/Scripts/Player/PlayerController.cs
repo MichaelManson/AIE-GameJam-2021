@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     public PlayerConfig playerConfig;
 
+    [SerializeField] private Animator anim;
+
     [SerializeField] private float speed = 1.0f;
     [SerializeField] private float airSpeed = 1.0f;
     [SerializeField] private float jumpForce = 1.0f;
@@ -20,8 +22,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private ConfigurableJoint hipJoint;
 
-    private PlayerControls playerControls;
-
     private Vector3 velocity;
 
     private bool hasJumped;
@@ -29,11 +29,6 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
 
     private float currentSpeed;
-
-    private void Awake()
-    {
-        playerControls = new PlayerControls();
-    }
 
     private void Start()
     {
@@ -43,32 +38,11 @@ public class PlayerController : MonoBehaviour
         Hips = hips;
     }
 
-    private void OnEnable()
-    {
-        playerControls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        playerControls.Disable();
-    }
-
     private void Update()
     {
-        return;
-        if (playerControls.Player.Jump.triggered)
-        {
-            Debug.Log("Jumping");
-
-            hasJumped = true;
-        }
-        
-        if(playerControls.Player.Punch.triggered)
-        {
-            Punch();
-        }
-
-        moveInput = playerControls.Player.Move.ReadValue<Vector2>();
+        // Update animation states
+        anim.SetFloat("MoveX", Mathf.Abs(moveInput.x));
+        anim.SetBool("Grounded", IsGrounded);
     }
 
     private void FixedUpdate()
@@ -125,11 +99,13 @@ public class PlayerController : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         hasJumped = context.action.triggered;
+        anim.SetTrigger("Jump");
     }
 
     public void OnMelee(InputAction.CallbackContext context)
     {
         StartCoroutine(ActiveMeleeCollision());
+        anim.SetTrigger("Melee");
     }
 
     /// <summary>

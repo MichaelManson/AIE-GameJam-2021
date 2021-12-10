@@ -26,14 +26,43 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: mixamo.com
+      takeName: mixamo.com
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 14
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -80,7 +109,117 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: Naruto Run(Clone)
+      parentName: 
+      position: {x: 0.0012218446, y: 0.0024372435, z: -0.05714977}
+      rotation: {x: 0.38033113, y: -0.048295356, z: 0.012077556, w: 0.9235096}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:Gingerbread
+      parentName: Naruto Run(Clone)
+      position: {x: -0, y: 0.130392, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RIG
+      parentName: Naruto Run(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: World_CTRL_GRP
+      parentName: RIG
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: JNT_GRP
+      parentName: RIG
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hip_JNT
+      parentName: JNT_GRP
+      position: {x: 0.003749528, y: 0.10376374, z: -0.016703244}
+      rotation: {x: -0.4708475, y: 0.038789015, z: -0.006210424, w: 0.88133967}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_Leg_JNT
+      parentName: Hip_JNT
+      position: {x: -0.018740999, y: -0.02, z: 0}
+      rotation: {x: 0.58026433, y: 0.55981356, z: 0.42067087, w: 0.41585833}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_Knee_JNT
+      parentName: L_Leg_JNT
+      position: {x: -0.033303, y: 0, z: 0}
+      rotation: {x: -0.13104077, y: -0.0057641687, z: 0.28560248, w: 0.9493294}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_Ankle_JNT
+      parentName: L_Knee_JNT
+      position: {x: -0.030385999, y: 0, z: 0}
+      rotation: {x: 0.5040813, y: 0.5664445, z: 0.5062756, w: -0.41076484}
+      scale: {x: 1.0206, y: 1.0206, z: 1.0206}
+    - name: R_Leg_JNT
+      parentName: Hip_JNT
+      position: {x: 0.018740999, y: -0.02, z: 0}
+      rotation: {x: 0.5015893, y: -0.49223724, z: 0.49458203, w: -0.5113701}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_Knee_JNT
+      parentName: R_Leg_JNT
+      position: {x: 0.033303, y: 0, z: 0}
+      rotation: {x: -0.18545951, y: -0.04236972, z: 0.30778828, w: 0.9322425}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_Ankle_JNT
+      parentName: R_Knee_JNT
+      position: {x: 0.030385999, y: 0, z: 0}
+      rotation: {x: 0.58793265, y: 0.27094626, z: 0.54647756, w: -0.5313056}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine_JNT
+      parentName: Hip_JNT
+      position: {x: -0, y: 0.013239999, z: 0}
+      rotation: {x: 0.12601383, y: 0.009976666, z: 0.0064949053, w: 0.99195707}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Chest_JNT
+      parentName: Spine_JNT
+      position: {x: -0, y: 0.03627, z: 0}
+      rotation: {x: 0.25009626, y: 0.010764524, z: 0.00014973768, w: 0.96816117}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_Shoulder_JNT
+      parentName: Chest_JNT
+      position: {x: -0.020409998, y: 0.008521999, z: 0.000206}
+      rotation: {x: 0.38932723, y: 0.016693741, z: 0.024954788, w: 0.9206101}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_Elbow_JNT
+      parentName: L_Shoulder_JNT
+      position: {x: -0.04, y: 0, z: -0.002404}
+      rotation: {x: -0.008750137, y: -0.038218666, z: 0.002594455, w: 0.99922776}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_Hand_JNT
+      parentName: L_Elbow_JNT
+      position: {x: -0.04, y: 0, z: 0.002404}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Neck
+      parentName: Chest_JNT
+      position: {x: -0, y: 0.02049, z: 0}
+      rotation: {x: -0.24359684, y: 0.006320793, z: -0.051219214, w: 0.9685026}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head
+      parentName: Neck
+      position: {x: -0, y: 0.095979996, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_Shoulder_JNT
+      parentName: Chest_JNT
+      position: {x: 0.020409998, y: 0.008521999, z: 0.000206}
+      rotation: {x: -0.95861304, y: 0.009724315, z: -0.041105505, w: 0.28156152}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_Elbow_JNT
+      parentName: R_Shoulder_JNT
+      position: {x: 0.04, y: 0, z: 0.002404}
+      rotation: {x: 0.13684177, y: -0.0343692, z: 0.010894571, w: 0.98993653}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_Hand_JNT
+      parentName: R_Elbow_JNT
+      position: {x: 0.04, y: 0, z: -0.002404}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -97,7 +236,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
