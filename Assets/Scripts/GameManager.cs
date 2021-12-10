@@ -217,7 +217,7 @@ public class GameManager : MonoBehaviour
         
 
         // Turn off win text
-        UIManager.Instance.winCanvas.gameObject.SetActive(false);
+        UIManager.Instance.winText.gameObject.SetActive(false);
         
         print("NOW");
         
@@ -260,6 +260,8 @@ public class GameManager : MonoBehaviour
     internal async Task Countdown()
     {
         var countdownAnimation = _ui.countdownText.GetComponent<Animation>();
+
+        Time.timeScale = 0f;
         
         _ui.countdownText.text = "3";
         countdownAnimation.Play();
@@ -286,6 +288,8 @@ public class GameManager : MonoBehaviour
 
         countdownAnimation.Stop();
         _ui.countdownText.text = "";
+
+        Time.timeScale = 1f;
     }
 
     #endregion

@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Canvases")] 
     public Canvas pauseCanvas;
-    public Canvas winCanvas;
+    public Canvas HUDCanvas;
     
     public TextMeshProUGUI[] playerScores = new TextMeshProUGUI[4];
     
@@ -56,7 +56,6 @@ public class UIManager : MonoBehaviour
         GameManager.OnGameWon -= GameWon;
         GameManager.OnRoundWon -= RoundWon;
         GameManager.OnRoundOver -= RoundOver;
-
     }
 
     // Start is called before the first frame update
@@ -64,8 +63,8 @@ public class UIManager : MonoBehaviour
     {
         //TurnPlayerScoresOn(false);
         
-        ShowWinCanvas(false);
-
+        winText.gameObject.SetActive(false);
+        
         timerText.text = "";
 
         //fadePanel.color = FadePanelColourClear;
@@ -88,19 +87,18 @@ public class UIManager : MonoBehaviour
     }
     
     public void ShowPauseMenu(bool showPauseMenu = true) => pauseCanvas.gameObject.SetActive(showPauseMenu);
-    private void ShowWinCanvas(bool showWinCanvas = true) => winCanvas.gameObject.SetActive(showWinCanvas);
 
     private void GameWon()
     {
         Debug.Log("Wow, delegate are awesome! " + name);
-        ShowWinCanvas();
+        winText.gameObject.SetActive(true);
     }
 
     private void RoundOver()
     {
         timerText.gameObject.SetActive(false);
 
-        ShowWinCanvas();
+        winText.gameObject.SetActive(true);
         
         winText.text = "Round Over...";
     }
@@ -109,8 +107,8 @@ public class UIManager : MonoBehaviour
     {
         timerText.gameObject.SetActive(false);
         
-        ShowWinCanvas();
-        
+        winText.gameObject.SetActive(true);
+
         winText.text = "Player " + GameManager.Instance.RoundWinner.PlayerNumber + " Wins The Round!";
     }
 }
