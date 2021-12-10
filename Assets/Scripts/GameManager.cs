@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int scoreToWin;
     
-    private Timer _timer;
+    public Timer _timer;
     private UIManager _ui;
     private LevelManager _level;
 
@@ -157,7 +157,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Makes all players able to move freely. (Rigidbody set to non-kinematic)
     /// </summary>
-    private static void ResetForcesOnPlayers()
+    public static void ResetForcesOnPlayers()
     {
         foreach (var player in PlayerManager.Instance.players)
         {

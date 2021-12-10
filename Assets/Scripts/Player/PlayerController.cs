@@ -131,4 +131,16 @@ public class PlayerController : MonoBehaviour
             hips.AddForce(hips.transform.right * meleeForce);
         }
     }
+
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        // If players are currenly player...
+        if (GameManager.Instance.currentGameState == GameManager.GameStates.Playing)
+        {
+            UIManager.Instance.Pause();
+
+            Debug.Log("PAUSING");
+        }
+    }
+
 }

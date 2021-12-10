@@ -41,6 +41,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI countdownText;
     public TextMeshProUGUI objectiveText;
 
+    public GameObject pauseScreen;
+
     [Space] public Image[] fadePanels = new Image[2];
     
     #endregion
@@ -115,5 +117,20 @@ public class UIManager : MonoBehaviour
         winText.gameObject.SetActive(true);
 
         winText.text = "Player " + GameManager.Instance.RoundWinner.PlayerNumber + " Wins The Round!";
+    }
+
+    public void Pause()
+    {
+        if(pauseScreen.activeInHierarchy)
+        {
+            pauseScreen.SetActive(false);
+            GameManager.ResetForcesOnPlayers();
+            GameManager.PauseGame();
+        }
+        else
+        {
+            pauseScreen.SetActive(true);
+            Time.timeScale = 0.0f;
+        }    
     }
 }

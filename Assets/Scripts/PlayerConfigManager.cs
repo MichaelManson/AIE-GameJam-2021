@@ -141,7 +141,7 @@ public class PlayerConfigManager : MonoBehaviour
 
         Reset();
 
-        GameManager.Instance.NewRound(true);
+        GameManager.Instance.Play();
     }
 
     private void Reset()
