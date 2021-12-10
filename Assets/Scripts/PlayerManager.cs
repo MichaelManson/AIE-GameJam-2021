@@ -26,6 +26,9 @@ public class PlayerManager : MonoBehaviour
     
     public List<Player> players = new List<Player>();
 
+    public static bool CanMove = true;
+    public static bool CanJump = true;
+
     public List<Player> GetPlayersOrderedByScore()
     {
         var tempList = players;
