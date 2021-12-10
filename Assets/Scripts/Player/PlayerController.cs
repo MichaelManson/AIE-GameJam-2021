@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
     public Rigidbody Hips { get; set; }
     [SerializeField] private Rigidbody hips;
 
-    [SerializeField] private GameObject meleeCollision;
     public bool IsGrounded { get; set; }
 
     [SerializeField]
@@ -92,7 +91,7 @@ public class PlayerController : MonoBehaviour
         currentVelocity.x = controlledXVelocity;
         hips.velocity = currentVelocity;
 
-        Debug.Log("VECLOTIY: " + hips.velocity);
+        //Debug.Log("VECLOTIY: " + hips.velocity);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -108,50 +107,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnMelee(InputAction.CallbackContext context)
     {
-        StartCoroutine(ActiveMeleeCollision());
         anim.SetTrigger("Melee");
 
         // Adds a force on melee
         hips.AddForce(hips.transform.right * meleeForce);
-    }
-
-    /// <summary>
-    /// Will be activated and deactived via animation event
-    /// </summary>
-    private void Punch()
-    {
-        StartCoroutine(ActiveMeleeCollision());
-    }
-
-    /// <summary>
-    /// Enable the melee box for a short time,
-    /// then disable
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator ActiveMeleeCollision()
-    {
-        meleeCollision.SetActive(true);
-
-        yield return new WaitForSeconds(0.5f);
-
-        meleeCollision.SetActive(false);
-    }
-
-    /// <summary>
-    /// Unity animation event. 
-    /// Enables the melee box
-    /// </summary>   
-    public void EnableAttack()
-    {
-        meleeCollision.SetActive(true);
-    }
-
-    /// <summary>
-    /// Unity animation event. 
-    /// Disables the melee box
-    /// </summary>
-    public void DisableAttack()
-    {
-        meleeCollision.SetActive(false);
     }
 }
