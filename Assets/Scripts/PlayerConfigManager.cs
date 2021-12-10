@@ -46,6 +46,9 @@ public class PlayerConfigManager : MonoBehaviour
 
     public void SpawnPlayerProfile(PlayerInput input)
     {
+        // Stop timer on another player join
+        timer.StopAllCoroutines();
+
         //GameObject player = Instantiate(playerProfilePrefab);
         input.transform.parent = null;
         input.transform.position = points[count].position;
