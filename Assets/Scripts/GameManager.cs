@@ -150,8 +150,9 @@ public class GameManager : MonoBehaviour
             // Turn on kinematic, so all forces are removed from player
             player.center.isKinematic = true;
 
-            player.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
-            player.center.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+            // Faces towards camera
+            player.transform.SetPositionAndRotation(Vector3.zero, Quaternion.Euler(0, 180, 0));
+            player.center.transform.SetPositionAndRotation(Vector3.zero, Quaternion.Euler(0, 180, 0));
             player.center.transform.position = spawnLocations[player.PlayerNumber].transform.position;
             player.center.velocity = Vector3.zero;
             
