@@ -41,11 +41,25 @@ public class Health : MonoBehaviour
             jointDrive.positionSpring = 0f;
             hipJoint.angularXDrive = jointDrive;
 
-
             JointDrive jointDriveYZ = hipJoint.angularYZDrive;
             jointDriveYZ.positionSpring = 0f;
             hipJoint.angularYZDrive = jointDriveYZ;
         }
+    }
+
+    public void Revive()
+    {
+        // Enable player movement, so they can move
+        playerController.enabled = true;
+
+        // Make the player balance
+        JointDrive jointDrive = hipJoint.angularXDrive;
+        jointDrive.positionSpring = 750f;
+        hipJoint.angularXDrive = jointDrive;
+
+        JointDrive jointDriveYZ = hipJoint.angularYZDrive;
+        jointDriveYZ.positionSpring = 750f;
+        hipJoint.angularYZDrive = jointDriveYZ;
     }
 
 }
