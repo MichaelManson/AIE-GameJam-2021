@@ -23,11 +23,13 @@ public class MeleeCollision : MonoBehaviour
 
             if (rb != null)
             {
+                Debug.Log("Applying FORCE");
+
                 rb.AddForce(transform.forward * knockbackForce);
                 HasHit = true;
             }
-            //// Otherwise access the playerController of the enemy and apply force
-            //else if(other.transform.parent.TryGetComponent<PlayerController>(out PlayerController enemy))
+            ////// Otherwise access the playerController of the enemy and apply force
+            //else if (other.transform.parent.TryGetComponent<PlayerController>(out PlayerController enemy))
             //{
             //    if (enemy == null)
             //        return;
@@ -36,7 +38,6 @@ public class MeleeCollision : MonoBehaviour
 
             //    enemy.Hips.AddForce(transform.forward * knockbackForce);
             //}
-
 
             if (other.transform.root.TryGetComponent<Health>(out Health health))
             {
