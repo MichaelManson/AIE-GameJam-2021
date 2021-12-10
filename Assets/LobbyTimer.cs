@@ -21,7 +21,7 @@ public class LobbyTimer : MonoBehaviour
         var time = duration;
 
         // Turn on the timer text
-        timerText.enabled = true;
+        timerText.gameObject.SetActive(true);
         timerText.text = time.ToString();
 
         // Countdown by 1 every second and update the text until it reaches zero
