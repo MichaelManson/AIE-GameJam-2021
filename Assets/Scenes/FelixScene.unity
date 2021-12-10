@@ -711,19 +711,19 @@ PrefabInstance:
     - target: {fileID: 431235356943910020, guid: 54373c71468530340a7c6d7fdca1e4c5, type: 3}
       propertyPath: playerHats.Array.data[0]
       value: 
-      objectReference: {fileID: 3748757977317847020, guid: 46adc68bf58c11643ab55814d8960e7c, type: 3}
+      objectReference: {fileID: 8855009609845894086, guid: 711574a029dfd1641aee441a9c240f9e, type: 3}
     - target: {fileID: 431235356943910020, guid: 54373c71468530340a7c6d7fdca1e4c5, type: 3}
       propertyPath: playerHats.Array.data[1]
       value: 
-      objectReference: {fileID: 5292048496652397273, guid: 10957a03555178d4fbb87e0549de1ebe, type: 3}
+      objectReference: {fileID: 5292048496652397273, guid: f5cba4e332a927941a663551036b9d27, type: 3}
     - target: {fileID: 431235356943910020, guid: 54373c71468530340a7c6d7fdca1e4c5, type: 3}
       propertyPath: playerHats.Array.data[2]
       value: 
-      objectReference: {fileID: 8891414743227315890, guid: 64e96e1bd5c7a9944986b33591bec6cf, type: 3}
+      objectReference: {fileID: 3748757977317847020, guid: 46adc68bf58c11643ab55814d8960e7c, type: 3}
     - target: {fileID: 431235356943910020, guid: 54373c71468530340a7c6d7fdca1e4c5, type: 3}
       propertyPath: playerHats.Array.data[3]
       value: 
-      objectReference: {fileID: 8855009609845894086, guid: 711574a029dfd1641aee441a9c240f9e, type: 3}
+      objectReference: {fileID: 5292048496652397273, guid: 10957a03555178d4fbb87e0549de1ebe, type: 3}
     - target: {fileID: 431235356943910021, guid: 54373c71468530340a7c6d7fdca1e4c5, type: 3}
       propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.size
       value: 3
