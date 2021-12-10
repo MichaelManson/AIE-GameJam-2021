@@ -69,6 +69,8 @@ public class UIManager : MonoBehaviour
         if (timerText) timerText.text = "";
         
         if (objectiveText) objectiveText.text = "";
+        
+        HUDCanvas.gameObject.SetActive(false);
 
         //fadePanel.color = FadePanelColourClear;
     }

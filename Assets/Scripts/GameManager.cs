@@ -118,6 +118,8 @@ public class GameManager : MonoBehaviour
         //_ui.ResetPlayerScores();
 
         currentGameState = GameStates.Playing;
+
+        if (!_level.levelParent) _level.levelParent = GameObject.Find("LevelParent").transform;
         
         await NewRound();
     }
