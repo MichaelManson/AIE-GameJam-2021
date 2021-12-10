@@ -2586,6 +2586,36 @@ Transform:
   m_Father: {fileID: 1793712141371024373}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4145093727287904107
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8056386842129387688}
+  m_Layer: 8
+  m_Name: Hat Placement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8056386842129387688
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4145093727287904107}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8781307107272330089}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4375406081114307287
 GameObject:
   m_ObjectHideFlags: 0
@@ -2805,7 +2835,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meleeCollision: {fileID: 474714279326600338}
   cloudParticleEffect: {fileID: 2673449299948643713}
-  cloudParticleEffectP: {fileID: 1654767688010324303}
 --- !u!1 &4702432046651981978
 GameObject:
   m_ObjectHideFlags: 0
@@ -4187,6 +4216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ragdollGroup: {fileID: 3770700473116056214}
+  hatPlacement: {fileID: 8056386842129387688}
 --- !u!1 &6417162054777021735
 GameObject:
   m_ObjectHideFlags: 0
@@ -5628,7 +5658,8 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0.09597952, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 8056386842129387688}
   m_Father: {fileID: 3834466222531712703}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6267,6 +6298,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4181359429762792002, guid: 1e88d567e2b5fcc4ca76986fafee482f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8107184873652111111, guid: 1e88d567e2b5fcc4ca76986fafee482f, type: 3}
       propertyPath: m_Name
       value: Player Info
@@ -6355,11 +6390,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d9e4bec3babdee42804f2b40d6251c4, type: 3}
---- !u!198 &1654767688010324303 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8224027891064178009, guid: 1d9e4bec3babdee42804f2b40d6251c4, type: 3}
-  m_PrefabInstance: {fileID: 7266408167359077398}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7372648889754043885 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 182288723304028667, guid: 1d9e4bec3babdee42804f2b40d6251c4, type: 3}

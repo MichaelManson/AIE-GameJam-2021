@@ -5,7 +5,7 @@ using TMPro;
 
 public class PlayerInfo : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI playerText;
+    //[SerializeField] private TextMeshProUGUI playerText;
     [SerializeField] private TextMeshProUGUI readyText;
 
     private PlayerConfig trackedPlayer;
@@ -22,7 +22,7 @@ public class PlayerInfo : MonoBehaviour
 
     public void Initialise(PlayerConfig player)
     {
-        playerText.text = "P" + player.PlayerId;
+        //playerText.text = "P" + player.PlayerId;
         trackedPlayer = player;
     }
 
