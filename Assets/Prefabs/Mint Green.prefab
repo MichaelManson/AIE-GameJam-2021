@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 152404766806015441}
   - component: {fileID: 3869340601266958964}
   - component: {fileID: 1321348610068285118}
+  - component: {fileID: 231843358076154241}
   m_Layer: 0
-  m_Name: ChirMints
+  m_Name: Mint Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &231843358076154241
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672905511716005739}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 87.84722, y: 55.869152, z: 87.84725}
+  m_Center: {x: 0, y: 0, z: 0}

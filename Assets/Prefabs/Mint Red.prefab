@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 2204769681669236449}
   - component: {fileID: 2969897237179345220}
   - component: {fileID: 1068415809999461774}
+  - component: {fileID: 5856590482048602697}
   m_Layer: 0
-  m_Name: ChirMints (1)
+  m_Name: Mint Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5856590482048602697
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572665516907199579}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 87.84722, y: 55.869152, z: 87.84725}
+  m_Center: {x: 0, y: 0, z: 0}
