@@ -10,6 +10,14 @@ public class Health : MonoBehaviour
     [Tooltip("Used as a temporary death animation")]
     [SerializeField] private ConfigurableJoint hipJoint;
 
+    private PlayerController playerController;
+
+    private void Awake()
+    {
+        playerController = GetComponent<PlayerController>();
+        Debug.Assert(playerController != null, "playerController is null!");
+    }
+
     [ContextMenu("Kill player")]
     private void KillPlayer()
     {
@@ -25,8 +33,10 @@ public class Health : MonoBehaviour
         {
             Debug.Log("Player is dead");
 
+            // Disable player movement, so they can't move
+            playerController.enabled = false;
 
-
+            // Make the player fall over
             JointDrive jointDrive = hipJoint.angularXDrive;
             jointDrive.positionSpring = 0f;
             hipJoint.angularXDrive = jointDrive;
