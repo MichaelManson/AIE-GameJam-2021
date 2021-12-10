@@ -17,6 +17,8 @@ public class PlayerSetUp : MonoBehaviour
 
     public void SetLayers(string layer)
     {
+        Debug.Log("Assigning layer: " + layer);
+
         playerParts = new List<Transform>();
 
         // Get all children under player and assign their layer

@@ -52,14 +52,14 @@ public class PlayerConfigManager : MonoBehaviour
 
         PlayerConfig player = input.GetComponent<PlayerConfig>();
 
-        // Set up the player's layers
-        PlayerSetUp playerSetup = input.transform.GetComponent<PlayerSetUp>();
-        playerSetup.SetLayers(layers[count]);
-
         count++;
 
         player.PlayerId = count;
         SetUpPlayerInfo(player);
+
+        // Set up the player's layers
+        PlayerSetUp playerSetup = input.transform.GetComponent<PlayerSetUp>();
+        playerSetup.SetLayers(layers[player.PlayerId - 1]);
         playerSetup.SetHat(player);
 
         Debug.Log("Player id: " + player.PlayerId);

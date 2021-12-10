@@ -503,7 +503,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &474714279326600337
 Transform:
   m_ObjectHideFlags: 0
@@ -512,8 +512,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 474714279326600341}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.05300004, z: 0.093}
-  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
+  m_LocalPosition: {x: 0, y: 0.032, z: 0.097}
+  m_LocalScale: {x: 0.15, y: 0.17, z: 0.15}
   m_Children: []
   m_Father: {fileID: 3770700473116056214}
   m_RootOrder: 3
@@ -579,7 +579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10c376f7c72277c479113928eddfe02e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackForce: 2000
+  knockbackForce: 5000
 --- !u!65 &474714279326600342
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4062,7 +4062,7 @@ MonoBehaviour:
   speed: 125
   airSpeed: 75
   jumpForce: 3350
-  meleeForce: 1000
+  meleeForce: 2000
   hips: {fileID: 474714279424395398}
   damage: 5
   meleeRate: 0.5
@@ -4215,7 +4215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0432900d8546b7848a539b488c4f3d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ragdollGroup: {fileID: 3770700473116056214}
+  ragdollGroup: {fileID: 8241284471881867452}
   hatPlacement: {fileID: 8056386842129387688}
 --- !u!1 &6417162054777021735
 GameObject:
@@ -6190,13 +6190,21 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 140722729157138564, guid: 1e88d567e2b5fcc4ca76986fafee482f, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 4cfac516fe9a12e4ab529e00b0959fbe, type: 2}
+    - target: {fileID: 140722729157138564, guid: 1e88d567e2b5fcc4ca76986fafee482f, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3254038529743948973, guid: 4cfac516fe9a12e4ab529e00b0959fbe, type: 2}
     - target: {fileID: 346672745388252934, guid: 1e88d567e2b5fcc4ca76986fafee482f, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 346672745388252934, guid: 1e88d567e2b5fcc4ca76986fafee482f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.22
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 346672745388252934, guid: 1e88d567e2b5fcc4ca76986fafee482f, type: 3}
       propertyPath: m_SizeDelta.x
