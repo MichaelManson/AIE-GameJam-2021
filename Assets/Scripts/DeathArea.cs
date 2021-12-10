@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class DeathArea : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        print("hit" + collision.gameObject.name + ", " + collision.gameObject.layer + ", " + GameManager.roundWon);
+        print("hit" + other.gameObject.name + ", " + other.gameObject.layer + ", " + GameManager.roundWon);
         
         if (GameManager.roundWon) return;
 
         Player p = null;
 
-        p = PlayerManager.Instance.CheckIfCollidedWithPlayer(collision.gameObject.layer);
+        p = PlayerManager.Instance.CheckIfCollidedWithPlayer(other.gameObject.layer);
 
         if (!p) return;
         
