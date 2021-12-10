@@ -27,7 +27,7 @@ public class Timer : MonoBehaviour
         // Countdown by 1 every second and update the text until it reaches zero
         while (time > 0)
         {
-            if (!_countdown) continue;
+            //if (!_countdown) continue;
             
             yield return new WaitForSecondsRealtime(1f);
             time--;
