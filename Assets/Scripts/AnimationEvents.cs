@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public class AnimationEvents : MonoBehaviour
 {
-    [SerializeField] private GameObject meleeCollision;
+    [SerializeField] private MeleeCollision meleeCollision;
 
     /// <summary>
     /// Unity animation event. 
@@ -17,7 +17,7 @@ public class AnimationEvents : MonoBehaviour
     public void StartAttack()
     {
         Debug.Log("Start attack");
-        meleeCollision.SetActive(true);
+        meleeCollision.gameObject.SetActive(true);
     }
 
     /// <summary>
@@ -27,6 +27,9 @@ public class AnimationEvents : MonoBehaviour
     public void EndAttack()
     {
         Debug.Log("End attack");
-        meleeCollision.SetActive(false);
+        meleeCollision.gameObject.SetActive(false);
+
+        // Reset hit
+        meleeCollision.HasHit = false;
     }
 }

@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
     public Rigidbody Hips { get; set; }
     [SerializeField] private Rigidbody hips;
 
+    [Header("Combat")]
+    public float damage = 5.0f;
+
     public bool IsGrounded { get; set; }
 
     [SerializeField]

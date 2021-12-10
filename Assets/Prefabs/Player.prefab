@@ -2803,7 +2803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f81059c3e52f1254b877e153a026c041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meleeCollision: {fileID: 474714279326600341}
+  meleeCollision: {fileID: 474714279326600338}
 --- !u!1 &4702432046651981978
 GameObject:
   m_ObjectHideFlags: 0
@@ -4033,7 +4033,7 @@ MonoBehaviour:
   jumpForce: 2000
   meleeForce: 1000
   hips: {fileID: 474714279424395398}
-  meleeCollision: {fileID: 474714279326600341}
+  damage: 5
   hipJoint: {fileID: 474714279424395403}
 --- !u!114 &474714279977426273
 MonoBehaviour:
