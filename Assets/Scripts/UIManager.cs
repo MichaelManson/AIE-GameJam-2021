@@ -121,16 +121,18 @@ public class UIManager : MonoBehaviour
 
     public void Pause()
     {
-        if(pauseScreen.activeInHierarchy)
-        {
-            pauseScreen.SetActive(false);
-            GameManager.ResetForcesOnPlayers();
-            GameManager.PauseGame();
-        }
-        else
-        {
-            pauseScreen.SetActive(true);
-            Time.timeScale = 0.0f;
-        }    
+        //if(pauseScreen.activeInHierarchy)
+        //{
+        //    pauseScreen.SetActive(false);
+        //    GameManager.ResetForcesOnPlayers();
+        //    Timer.PauseTimer();
+        //    //Time.timeScale = 1.0f;
+        //}
+        //else
+        //{
+        //    pauseScreen.SetActive(true);
+        //    GameManager.ResetForcesOnPlayers();
+        //    //Time.timeScale = 0.0f;
+        //}    
     }
 }
