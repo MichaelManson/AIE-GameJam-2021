@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,6 +16,8 @@ public class PlayerConfigManager : MonoBehaviour
     private bool[] playersReady;
 
     private int count = 0;
+
+    private bool allPlayersReady;
 
     private void Awake()
     {
@@ -37,6 +40,8 @@ public class PlayerConfigManager : MonoBehaviour
         PlayerConfig player = input.GetComponent<PlayerConfig>();
         player.playerId = count;
 
+        Debug.Log("Player id: " + player.playerId);
+
         // Keep track of currently-joined players
         playersJoined.Add(player);
 
@@ -46,47 +51,56 @@ public class PlayerConfigManager : MonoBehaviour
 
     public void UpdatePlayerProfiles(PlayerConfig player, bool isReady)
     {
-        if (isReady)
-        {
-            playersReady[player.playerId] = isReady;
-        }
-        else
-        {
+        playersReady[player.playerId] = isReady;
 
-            // Decrease count
-            count--;
+        CheckPlayerProfiles();
 
-            // Remove from player list
-            playersJoined.Remove(player);
+        //if (isReady)
+        //{
+        //}
+        //else
+        //{
 
-            Debug.Log(playersJoined.Count);
-        }
+        //    // Decrease count
+        //    count--;
+
+        //    // Remove from player list
+        //    playersJoined.Remove(player);
+
+        //    Debug.Log(playersJoined.Count);
+        //}
     }
 
-
     /// <summary>
-    /// Sent by PlayerConfig, the manager
-    /// checks if all players have readied up
+    /// Checks if all players are readied up
     /// </summary>
-    public void OnReady()
+    private void CheckPlayerProfiles()
     {
         if (playersJoined.Count == 0)
         {
             StopAllCoroutines();
+            allPlayersReady = false;
             return;
         }
 
-        for(int i = 0; i < playersJoined.Count; i++)
+        // Assume all players are ready
+        allPlayersReady = true;
+
+        // Check if they all are ready
+        for (int i = 0; i < playersJoined.Count; i++)
         {
             // If a player isn't ready, exit
             if (!playersJoined[i].IsReady)
             {
+                Debug.Log("Not everyone is ready!");
+                allPlayersReady = false;
                 StopAllCoroutines();
-                return;
             }
         }
 
-        StartCoroutine(BeginCountDown());
+        // If all players are ready, begin countdown to level
+        if(allPlayersReady)
+            StartCoroutine(BeginCountDown());
     }
 
     /// <summary>

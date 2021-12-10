@@ -16,36 +16,33 @@ public class PlayerConfig : MonoBehaviour
 
     public bool IsReady {get; set;}
 
-    private PlayerControls playerControls;
-
-    private void Awake()
+    private void Start()
     {
-        playerControls = new PlayerControls();
+        // Set up player index name (Player 1, Player 2 etc)
+        playerText.text = "Player " + playerId;
     }
 
-    private void OnEnable()
+    public void Ready_performed(InputAction.CallbackContext obj)
     {
-        playerControls.Enable();
-
-        playerControls.Profile.Ready.performed += Ready_performed;   
-    }
-
-    private void OnDisable()
-    {
-        playerControls.Disable();
-
-        playerControls.Profile.Ready.performed -= Ready_performed;
-    }
-
-    private void Ready_performed(InputAction.CallbackContext obj)
-    {
+        Debug.Log("Player interacting is:" + playerId);
         IsReady = !IsReady;
 
+        UpdateUI();
+
+        // Sends a message to the manager to update ready players
         PlayerConfigManager.Instance.UpdatePlayerProfiles(this, IsReady);
+    }
 
-
-        Debug.Log("Ready state: " + IsReady);
-
-        PlayerConfigManager.Instance.OnReady();
+    private void UpdateUI()
+    {
+        if(IsReady)
+        {
+            // Display ready text
+            readyText.enabled = true;
+        }
+        else
+        {
+            readyText.enabled = false;
+        }
     }
 }
