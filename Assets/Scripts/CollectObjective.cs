@@ -5,15 +5,16 @@ using UnityEngine;
 
 public class CollectObjective : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         gameObject.SetActive(false);
         
         if (GameManager.Instance.CurrentLevelObjectiveType != LevelManager.LevelObjectiveType.CollectObject) return;
 
-        GameManager.Instance.SetRoundWinner(PlayerManager.Instance.CheckIfCollidedWithPlayer(collision.gameObject.layer));
+        GameManager.Instance.SetRoundWinner(PlayerManager.Instance.CheckIfCollidedWithPlayer(other.gameObject.layer));
         
+        GameManager.Instance.RoundIsOver();
         
-        
+        GameManager.roundWon = true;
     }
 }

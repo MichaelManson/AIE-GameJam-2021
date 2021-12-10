@@ -5,7 +5,7 @@ public class Timer : MonoBehaviour
 {
     private static bool _countdown;
     
-    public void BeginTimer(int duration = 60)
+    public async void BeginTimer(int duration = 60)
     {
         // Stop the old timer
         StopAllCoroutines();
@@ -25,8 +25,10 @@ public class Timer : MonoBehaviour
         UIManager.Instance.timerText.text = time.ToString();
 
         // Countdown by 1 every second and update the text until it reaches zero
-        while (time > 0 && _countdown)
+        while (time > 0)
         {
+            //if (!_countdown) continue;
+            
             yield return new WaitForSecondsRealtime(1f);
             time--;
             UIManager.Instance.timerText.text = time.ToString();
@@ -36,6 +38,7 @@ public class Timer : MonoBehaviour
     }
 
     public static void PauseTimer() => _countdown = false;
+    public static void ResumeTimer() => _countdown = true;
     
     private void TimerEnd()
     {
