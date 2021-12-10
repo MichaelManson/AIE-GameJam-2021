@@ -85,10 +85,14 @@ public class GameManager : MonoBehaviour
     public delegate void GameWonHandler();
     public static event GameWonHandler OnGameWon;
 
+    public bool RoundStarted { get; set; }
+
     private void OnEnable()
     {
         OnRoundWon += RoundIsOver;
         OnRoundOver += RoundIsOver;
+
+        RoundStarted = false;
     }
 
     private void OnDisable()
@@ -230,6 +234,8 @@ public class GameManager : MonoBehaviour
             // Else say Round Over
             "Round Over...";
 
+        RoundStarted = false;
+
         // Prepare new round
         await NewRound();
     }
@@ -270,7 +276,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadEndGame();
 
             await Task.Delay(100);
-            
+
             // Spawn characters on the podium in order
             SpawnCharacters(PlayerManager.Instance.GetPlayersOrderedByScore());
             
@@ -291,7 +297,7 @@ public class GameManager : MonoBehaviour
             _ui.objectiveText.text = "Objective: " + _level.currentLevel.objectiveDescription;
 
             await Task.Delay(100);
-        
+
             // Spawn all the characters in the right spot
             SpawnCharacters(PlayerManager.Instance.players);
         }
@@ -300,11 +306,13 @@ public class GameManager : MonoBehaviour
         
         // Begin Round Countdown
         await Countdown();
-        
+
         // Make all player Physics objects
         ResetForcesOnPlayers();
         
         await Task.Delay(1000);
+
+        RoundStarted = true;
 
         // Get rid of countdown text
         _ui.countdownText.GetComponent<Animation>().Stop();
