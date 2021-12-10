@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fae8c70d9c56adc4f81bf32b5f81b8b9, type: 3}
-  m_Name: Level 5
+  m_Name: Level 8
   m_EditorClassIdentifier: 
-  levelGeo: {fileID: 7818273236914103305, guid: 3b4624b532026874485ae83b41e55cfc, type: 3}
+  levelGeo: {fileID: 7351342006020217576, guid: 50e2fb8267d8d854ead22ff641183ec6, type: 3}
   previewImage: {fileID: 0}
-  levelObjectiveType: 0
-  objectiveDescription: Last Gingerbread man standing wins!
+  levelObjectiveType: 1
+  objectiveDescription: Race to the turkey!

@@ -8,6 +8,8 @@ public class CollectObjective : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         gameObject.SetActive(false);
+
+        if (GameManager.roundWon || GameManager.roundOver) return;
         
         if (GameManager.Instance.CurrentLevelObjectiveType != LevelManager.LevelObjectiveType.CollectObject) return;
 

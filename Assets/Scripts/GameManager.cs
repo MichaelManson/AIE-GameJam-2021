@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
     public Player RoundWinner => _lastWinner;
 
     public static bool roundWon = false;
+    public static bool roundOver = false;
 
     public static bool watchForDeath = false;
 
@@ -168,12 +169,12 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Makes all players able to move freely. (Rigidbody set to non-kinematic)
     /// </summary>
-    public static void ResetForcesOnPlayers()
+    public static void ResetForcesOnPlayers(bool kinematic = false)
     {
         foreach (var player in PlayerManager.Instance.players)
         {
             // Turn it back on, so we can move it
-            player.center.isKinematic = false;
+            player.center.isKinematic = kinematic;
         }
     }
     
@@ -228,6 +229,8 @@ public class GameManager : MonoBehaviour
     {
         print("Round is now over!");
 
+        roundOver = true;
+
         await Task.Yield();
         
         Timer.StopTimer();
@@ -273,6 +276,8 @@ public class GameManager : MonoBehaviour
         _lastWinner = null;
 
         roundWon = false;
+
+        roundOver = false;
         
         _ui.HUDCanvas.gameObject.SetActive(true);
 

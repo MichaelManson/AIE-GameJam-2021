@@ -367,6 +367,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 24c941ec479a76749af361b728f55058, type: 2}
   - {fileID: 11400000, guid: 1f294476fef583c42af2414e2e1e84ec, type: 2}
   - {fileID: 11400000, guid: c91d66773ace06f4da529d7b53520d57, type: 2}
+  - {fileID: 11400000, guid: a9ca1f5862cc2794aa2740174fa993ef, type: 2}
+  - {fileID: 11400000, guid: c1af138ecbcdd3740851bad15821583c, type: 2}
   winLevel: {fileID: 11400000, guid: e6447aee3fa23464da6ccf682872972d, type: 2}
   currentLevel: {fileID: 0}
 --- !u!114 &2364413978057607399
