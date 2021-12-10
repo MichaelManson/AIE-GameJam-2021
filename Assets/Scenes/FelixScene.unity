@@ -1818,6 +1818,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4730354698485323512, guid: 583133f3999c54245a24d8ef6e64fd38, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730354698485323512, guid: 583133f3999c54245a24d8ef6e64fd38, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730354698485323512, guid: 583133f3999c54245a24d8ef6e64fd38, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730354698485323512, guid: 583133f3999c54245a24d8ef6e64fd38, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5808650603104647367, guid: 583133f3999c54245a24d8ef6e64fd38, type: 3}
       propertyPath: m_text
       value: 00
