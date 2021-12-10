@@ -380,7 +380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &474714279326600337
 Transform:
   m_ObjectHideFlags: 0
@@ -2702,6 +2702,8 @@ MonoBehaviour:
   jumpForce: 4000
   meleeForce: 200
   hips: {fileID: 474714279424395398}
+  damage: 5
+  meleeRate: 0.5
   hipJoint: {fileID: 474714279424395403}
 --- !u!114 &474714279977426273
 MonoBehaviour:
@@ -2839,6 +2841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ragdollGroup: {fileID: 3770700473116056214}
+  hatPlacement: {fileID: 0}
 --- !u!1 &6518096145874064297
 GameObject:
   m_ObjectHideFlags: 0
