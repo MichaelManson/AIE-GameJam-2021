@@ -2695,6 +2695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerConfig: {fileID: 8389858134888082377, guid: 31e3fff772ebcb54e9855d67b0b332d0, type: 3}
+  anim: {fileID: 0}
   speed: 125
   airSpeed: 75
   jumpForce: 2000
@@ -2823,9 +2824,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerProfile: {fileID: 0}
-  playerText: {fileID: 0}
-  readyText: {fileID: 0}
-  playerId: 0
   playerPrefabTest: {fileID: 0}
 --- !u!114 &3019998164482262687
 MonoBehaviour:
@@ -2839,6 +2837,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0432900d8546b7848a539b488c4f3d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ragdollGroup: {fileID: 3770700473116056214}
 --- !u!1 &6518096145874064297
 GameObject:
   m_ObjectHideFlags: 0

@@ -4167,6 +4167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0432900d8546b7848a539b488c4f3d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ragdollGroup: {fileID: 3770700473116056214}
 --- !u!1 &6417162054777021735
 GameObject:
   m_ObjectHideFlags: 0

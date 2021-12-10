@@ -11,12 +11,14 @@ public class PlayerSetUp : MonoBehaviour
 {
     private List<Transform> playerParts;
 
+    [SerializeField] private Transform ragdollGroup;
+
     public void SetLayers(string layer)
     {
         playerParts = new List<Transform>();
 
         // Get all children under player and assign their layer
-        playerParts = GetComponentsInChildren<Transform>().ToList();
+        playerParts = ragdollGroup.GetComponentsInChildren<Transform>(true).ToList();
 
         for (int i = 0; i < playerParts.Count; i++)
         {
