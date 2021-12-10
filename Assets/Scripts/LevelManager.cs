@@ -20,7 +20,9 @@ public class LevelManager : MonoBehaviour
     
     public List<Level> levels = new List<Level>();
 
-    public Level currentLevel;
+    [SerializeField] private Level winLevel;
+    
+    [HideInInspector] public Level currentLevel;
 
     // protected:
     
@@ -58,5 +60,10 @@ public class LevelManager : MonoBehaviour
 
         // and load the new one
         _currentLevelGeo = Instantiate(l.levelGeo, levelParent);
+    }
+
+    public void LoadWinLevel()
+    {
+        LoadLevel(winLevel);
     }
 }

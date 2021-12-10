@@ -109,16 +109,16 @@ public class GameManager : MonoBehaviour
         currentGameState = GameStates.Menu;
     }
 
-    public void Play()
+    public async void Play()
     {
         //_ui.ResetPlayerScores();
 
         currentGameState = GameStates.Playing;
         
-        NewRound();
+        await NewRound();
     }
 
-    public void SpawnCharacters()
+    public static void SpawnCharacters(List<Player> players)
     {
         // Find all the spawn locations of the current level
         var spawnLocations = GameObject.Find("Spawns").GetComponentsInChildren<Transform>();
@@ -126,29 +126,28 @@ public class GameManager : MonoBehaviour
         print(spawnLocations[0].parent.name);
         
         // Spawn every player at the appropriate position
-        foreach (var player in PlayerManager.Instance.players)
+        foreach (var player in players)
         {
-            // Resets all forces
-            StartCoroutine(Test(player));
+            // Turn on kinematic, so all forces are removed from player
+            player.center.isKinematic = true;
 
             player.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
             player.center.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
             player.center.transform.position = spawnLocations[player.PlayerNumber].transform.position;
             player.center.velocity = Vector3.zero;
             
-            print(player.center.transform.position + ", " + spawnLocations[player.PlayerNumber].transform.position);
+            print(player.center.transform.position + ", " + 
+                  spawnLocations[player.PlayerNumber].transform.position);
         }
     }
-
-    private IEnumerator Test(Player player)
+    
+    private static void ResetForcesOnPlayers()
     {
-        // Turn on kinematic, so all forces are removed from player
-        player.center.isKinematic = true;
-
-        yield return new WaitForSeconds(0.5f);
-
-        // Turn it back on, so we can move it
-        player.center.isKinematic = false;
+        foreach (var player in PlayerManager.Instance.players)
+        {
+            // Turn it back on, so we can move it
+            player.center.isKinematic = false;
+        }
     }
     
     private void LoadRandomLevel()
@@ -200,6 +199,7 @@ public class GameManager : MonoBehaviour
         await NewRound();
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     private async Task NewRound()
     {
         // Set time to 1x (normal) speed
@@ -218,24 +218,41 @@ public class GameManager : MonoBehaviour
 
         // Turn off win text
         UIManager.Instance.winText.gameObject.SetActive(false);
-        
-        print("NOW");
-        
+
         // Load a random level
         LoadRandomLevel();
 
         await Task.Delay(100);
         
         // Spawn all the characters in the right spot
-        SpawnCharacters();
+        SpawnCharacters(PlayerManager.Instance.players);
 
         // Check if a player has won the game
         if (CheckGameWon())
+        {
             GameWon();
+
+            _level.LoadWinLevel();
+            
+            SpawnCharacters(PlayerManager.Instance.GetPlayersOrderedByScore());
+            
+            ResetForcesOnPlayers();
+
+            PlayerManager.CanMove = false;
+            
+            return;
+        }
 
         await Task.Delay(2000);
         
         await Countdown();
+        
+        ResetForcesOnPlayers();
+        
+        await Task.Delay(1000);
+
+        _ui.countdownText.GetComponent<Animation>().Stop();
+        _ui.countdownText.text = "";
         
         _timer.BeginTimer(30);
     }
@@ -261,8 +278,6 @@ public class GameManager : MonoBehaviour
     {
         var countdownAnimation = _ui.countdownText.GetComponent<Animation>();
 
-        Time.timeScale = 0f;
-        
         _ui.countdownText.text = "3";
         countdownAnimation.Play();
 
@@ -283,15 +298,8 @@ public class GameManager : MonoBehaviour
         countdownAnimation.Stop();
         _ui.countdownText.text = "GO!";
         countdownAnimation.Play();
-
-        await Task.Delay(1000);
-
-        countdownAnimation.Stop();
-        _ui.countdownText.text = "";
-
-        Time.timeScale = 1f;
     }
-
+    
     #endregion
     
     public static void PauseGame()

@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
     {
         velocity = new Vector3(moveInput.x, 0, 0).normalized;
 
-        if (velocity.magnitude >= 0.1f)
+        if (velocity.magnitude >= 0.1f && PlayerManager.CanMove)
         {
             Debug.Log("Applying force");
             Vector3 dir = -velocity;
@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if(hasJumped && IsGrounded)
+        if(hasJumped && IsGrounded && PlayerManager.CanJump)
         {
             Debug.Log("Moving char up");
 

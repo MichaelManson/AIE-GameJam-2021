@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     
     // private:
 
-    public int Wins { get; private set; }
+    public int Wins { get; set; }
     public int PlayerNumber { get; set; }
 
     public Rigidbody center;
