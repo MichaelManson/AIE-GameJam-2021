@@ -25,7 +25,7 @@ public class PlayerManager : MonoBehaviour
     #endregion
     
     public List<Player> players = new List<Player>();
-    public List<Player> activePlayers = new List<Player>();
+    public List<Player> activePlayers;
 
     public static bool CanMove = true;
     public static bool CanJump = true;
@@ -53,6 +53,16 @@ public class PlayerManager : MonoBehaviour
         return tempList;
     }
 
+    public void ResetPlayers()
+    {
+        foreach (var player in players)
+        {
+            player.transform.position = new Vector3(0, 20, 0);
+            player.center.transform.position = new Vector3(0, 20, 0);
+
+        }
+    }
+    
     public void RemovePlayer(Player player)
     {
         // Remove the player from the list of active players
@@ -69,18 +79,14 @@ public class PlayerManager : MonoBehaviour
     {
         switch (layer)
         {
-            case 8: // Player1
+            case 8:
                 return players[0];
-                break;
-            case 9: // Player2
+            case 9:
                 return players[1];
-                break;
-            case 10: // Player3
+            case 10:
                 return players[2];
-                break;
-            case 11: // Player4
+            case 11:
                 return players[3];
-                break;
             default:
                 return null;
         }
