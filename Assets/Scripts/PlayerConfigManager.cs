@@ -48,6 +48,7 @@ public class PlayerConfigManager : MonoBehaviour
     {
         // Stop timer on another player join
         timer.StopAllCoroutines();
+        StopAllCoroutines();
 
         //GameObject player = Instantiate(playerProfilePrefab);
         input.transform.parent = null;
