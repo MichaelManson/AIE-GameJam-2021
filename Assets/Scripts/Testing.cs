@@ -7,7 +7,7 @@ public class Testing : MonoBehaviour
 
     private void Start()
     {
-        SpawnPlayers();
+        //SpawnPlayers();
     }
 
     private async void SpawnPlayers()
