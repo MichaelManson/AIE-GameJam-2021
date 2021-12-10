@@ -137,6 +137,9 @@ public class GameManager : MonoBehaviour
         // Spawn every player at the appropriate position
         foreach (var player in players)
         {
+            // Revive the player
+            player.GetComponent<Health>().Revive();           
+
             // Turn the player on
             player.gameObject.SetActive(true);
             
