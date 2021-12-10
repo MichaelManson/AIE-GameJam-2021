@@ -9,58 +9,29 @@ public class PlayerConfig : MonoBehaviour
 {
     public Image playerProfile;
 
-    public TextMeshProUGUI playerText;
-    public TextMeshProUGUI readyText;
-
-    public int playerId; // Used to identify player number (1, 2,3,4)
+    public int PlayerId { get; set; } // Used to identify player number (1, 2,3,4)
 
     public bool IsReady {get; set;}
 
     public GameObject playerPrefabTest;
 
-    private void Start()
+    public PlayerInfo PlayerInfo { get; set; }
+
+    private void Awake()
     {
-        // Set up player index name (Player 1, Player 2 etc)
-        //playerText.text = "Player " + playerId;
-
-
+        PlayerInfo = transform.GetComponentInChildren<PlayerInfo>();
+        Debug.Assert(PlayerInfo != null, "playerInfo is null");
     }
 
     public void Ready_performed(InputAction.CallbackContext obj)
     {
-        Debug.Log("Player interacting is:" + playerId);
+        Debug.Log("Player interacting is:" + PlayerId);
         IsReady = !IsReady;
-
-        //UpdateUI();
 
         // Sends a message to the manager to update ready players
         PlayerConfigManager.Instance.UpdatePlayerProfiles(this, IsReady);
+
+        // Enabled / Disable the ready text
+        PlayerInfo.PlayerConfig_OnReadyEvent();
     }
-
-    private void UpdateUI()
-    {
-        if(IsReady)
-        {
-            // Display ready text
-            readyText.enabled = true;
-        }
-        else
-        {
-            readyText.enabled = false;
-        }
-    }
-
-    private void SpawnPlayers()
-    {
-        playerPrefabTest = Instantiate(playerPrefabTest);
-        playerPrefabTest.transform.parent = null;
-        playerPrefabTest.transform.position = Vector3.zero;
-
-        PlayerInput playerInput = GetComponent<PlayerInput>();
-
-        PlayerInput newPlayer = playerPrefabTest.AddComponent<PlayerInput>();
-
-        
-    }
-
 }

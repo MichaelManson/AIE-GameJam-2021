@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisable()
     {
-        playerControls.Enable();
+        playerControls.Disable();
     }
 
     private void Update()
