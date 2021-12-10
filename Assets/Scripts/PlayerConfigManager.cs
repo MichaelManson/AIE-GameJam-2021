@@ -19,6 +19,8 @@ public class PlayerConfigManager : MonoBehaviour
 
     private bool allPlayersReady;
 
+    private string[] layers = new string[4] { "Player1", "Player2", "Player3", "Player4" };
+
     private void Awake()
     {
         Instance = this;
@@ -32,8 +34,11 @@ public class PlayerConfigManager : MonoBehaviour
     public void SpawnPlayerProfile(PlayerInput input)
     {
         //GameObject player = Instantiate(playerProfilePrefab);
-        input.transform.parent = points[count];
-        input.GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
+        input.transform.parent = null;
+        input.transform.position = points[count].position;
+
+        // Set up the player's layer
+        input.transform.GetComponent<PlayerSetUp>().SetLayers(layers[count]);
 
         count++;
 
@@ -113,4 +118,6 @@ public class PlayerConfigManager : MonoBehaviour
 
         Debug.Log("All players ready. Proceed!");
     }
+
+
 }

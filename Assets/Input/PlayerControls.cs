@@ -41,6 +41,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Ready"",
+                    ""type"": ""Button"",
+                    ""id"": ""b4e8da17-17b8-4ea9-8526-8408efb075f6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -197,27 +205,11 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Punch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Profile"",
-            ""id"": ""73d93540-e3ce-4cf9-9371-a6a0feff2ae9"",
-            ""actions"": [
-                {
-                    ""name"": ""Ready"",
-                    ""type"": ""Button"",
-                    ""id"": ""d32b84b7-1444-4337-8327-21e19b80a910"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                }
-            ],
-            ""bindings"": [
+                },
                 {
                     ""name"": """",
-                    ""id"": ""76ed8ca2-5acf-452d-80fe-e6463b7aa284"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""id"": ""15e91887-3329-462e-aae7-c445430f3738"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -227,8 +219,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""a2f6995c-514b-451a-8230-094da43b99ec"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""id"": ""339b44bb-cfc0-49db-ac93-c550a03281d3"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -246,9 +238,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Punch = m_Player.FindAction("Punch", throwIfNotFound: true);
-        // Profile
-        m_Profile = asset.FindActionMap("Profile", throwIfNotFound: true);
-        m_Profile_Ready = m_Profile.FindAction("Ready", throwIfNotFound: true);
+        m_Player_Ready = m_Player.FindAction("Ready", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -301,6 +291,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Punch;
+    private readonly InputAction m_Player_Ready;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -308,6 +299,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Punch => m_Wrapper.m_Player_Punch;
+        public InputAction @Ready => m_Wrapper.m_Player_Ready;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -326,6 +318,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Punch.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunch;
                 @Punch.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunch;
                 @Punch.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunch;
+                @Ready.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReady;
+                @Ready.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReady;
+                @Ready.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReady;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -339,51 +334,18 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Punch.started += instance.OnPunch;
                 @Punch.performed += instance.OnPunch;
                 @Punch.canceled += instance.OnPunch;
-            }
-        }
-    }
-    public PlayerActions @Player => new PlayerActions(this);
-
-    // Profile
-    private readonly InputActionMap m_Profile;
-    private IProfileActions m_ProfileActionsCallbackInterface;
-    private readonly InputAction m_Profile_Ready;
-    public struct ProfileActions
-    {
-        private @PlayerControls m_Wrapper;
-        public ProfileActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Ready => m_Wrapper.m_Profile_Ready;
-        public InputActionMap Get() { return m_Wrapper.m_Profile; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(ProfileActions set) { return set.Get(); }
-        public void SetCallbacks(IProfileActions instance)
-        {
-            if (m_Wrapper.m_ProfileActionsCallbackInterface != null)
-            {
-                @Ready.started -= m_Wrapper.m_ProfileActionsCallbackInterface.OnReady;
-                @Ready.performed -= m_Wrapper.m_ProfileActionsCallbackInterface.OnReady;
-                @Ready.canceled -= m_Wrapper.m_ProfileActionsCallbackInterface.OnReady;
-            }
-            m_Wrapper.m_ProfileActionsCallbackInterface = instance;
-            if (instance != null)
-            {
                 @Ready.started += instance.OnReady;
                 @Ready.performed += instance.OnReady;
                 @Ready.canceled += instance.OnReady;
             }
         }
     }
-    public ProfileActions @Profile => new ProfileActions(this);
+    public PlayerActions @Player => new PlayerActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnPunch(InputAction.CallbackContext context);
-    }
-    public interface IProfileActions
-    {
         void OnReady(InputAction.CallbackContext context);
     }
 }

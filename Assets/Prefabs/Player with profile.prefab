@@ -2656,12 +2656,11 @@ GameObject:
   - component: {fileID: 6022359281092416349}
   - component: {fileID: 474714279977426272}
   - component: {fileID: 474714279977426273}
-  - component: {fileID: 5483468483879947002}
-  - component: {fileID: 2140629685018344001}
-  - component: {fileID: 5912099732610158478}
-  - component: {fileID: 2500520349398105658}
+  - component: {fileID: 3872729988792611203}
+  - component: {fileID: 7542254887282156269}
+  - component: {fileID: 3019998164482262687}
   m_Layer: 8
-  m_Name: Player
+  m_Name: Player with profile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2695,7 +2694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cf72d09ed0fe8b4f8a3bf6e19958036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerConfig: {fileID: 0}
+  playerConfig: {fileID: 8389858134888082377, guid: 31e3fff772ebcb54e9855d67b0b332d0, type: 3}
   speed: 125
   airSpeed: 75
   jumpForce: 2000
@@ -2717,20 +2716,7 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   hipJoint: {fileID: 474714279424395403}
---- !u!114 &5483468483879947002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6401980631675963879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 199cf403f9c28544595eeedf7b484196, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  center: {fileID: 474714279424395398}
---- !u!114 &2140629685018344001
+--- !u!114 &3872729988792611203
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2805,7 +2791,7 @@ MonoBehaviour:
     m_ActionName: Player/Punch[/XInputControllerWindows/buttonWest,/Keyboard/f]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5912099732610158478}
+      - m_Target: {fileID: 7542254887282156269}
         m_TargetAssemblyTypeName: PlayerConfig, Assembly-CSharp
         m_MethodName: Ready_performed
         m_Mode: 0
@@ -2824,7 +2810,7 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &5912099732610158478
+--- !u!114 &7542254887282156269
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2841,7 +2827,7 @@ MonoBehaviour:
   readyText: {fileID: 0}
   playerId: 0
   playerPrefabTest: {fileID: 0}
---- !u!114 &2500520349398105658
+--- !u!114 &3019998164482262687
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
