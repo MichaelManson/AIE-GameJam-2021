@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
 
     public static bool roundWon = false;
 
+    public LevelManager.LevelObjectiveType CurrentLevelObjectiveType => _level.currentLevel.levelObjectiveType;
+
     // private:
 
     [SerializeField] private int scoreToWin;
@@ -191,7 +193,7 @@ public class GameManager : MonoBehaviour
         print(_level.currentLevel.name);
     }
 
-    public void MatchWinner(Player player) => _lastWinner = player;
+    public void SetRoundWinner(Player player) => _lastWinner = player;
 
     private bool CheckGameWon()
     {

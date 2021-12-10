@@ -64,4 +64,25 @@ public class PlayerManager : MonoBehaviour
             p.PlayerNumber--;
         }
     }
+
+    public Player CheckIfCollidedWithPlayer(int layer)
+    {
+        switch (layer)
+        {
+            case 8: // Player1
+                return players[0];
+                break;
+            case 9: // Player2
+                return players[1];
+                break;
+            case 10: // Player3
+                return players[2];
+                break;
+            case 11: // Player4
+                return players[3];
+                break;
+            default:
+                return null;
+        }
+    }
 }
