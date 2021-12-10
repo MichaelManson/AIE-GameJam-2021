@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public PlayerConfig playerConfig;
+
     [SerializeField] private float speed = 1.0f;
     [SerializeField] private float airSpeed = 1.0f;
     [SerializeField] private float jumpForce = 1.0f;
@@ -53,6 +55,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        return;
         if (playerControls.Player.Jump.triggered)
         {
             Debug.Log("Jumping");
@@ -112,6 +115,21 @@ public class PlayerController : MonoBehaviour
 
         }
         //hips.velocity = velocity * currentSpeed * Time.deltaTime;
+    }
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        hasJumped = context.action.triggered;
+    }
+
+    public void OnMelee(InputAction.CallbackContext context)
+    {
+        StartCoroutine(ActiveMeleeCollision());
     }
 
     /// <summary>

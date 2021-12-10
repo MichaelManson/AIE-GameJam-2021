@@ -28,6 +28,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Ready",
+                    "type": "Button",
+                    "id": "b4e8da17-17b8-4ea9-8526-8408efb075f6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -184,27 +192,11 @@
                     "action": "Punch",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Profile",
-            "id": "73d93540-e3ce-4cf9-9371-a6a0feff2ae9",
-            "actions": [
-                {
-                    "name": "Ready",
-                    "type": "Button",
-                    "id": "d32b84b7-1444-4337-8327-21e19b80a910",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                }
-            ],
-            "bindings": [
+                },
                 {
                     "name": "",
-                    "id": "76ed8ca2-5acf-452d-80fe-e6463b7aa284",
-                    "path": "<Keyboard>/space",
+                    "id": "15e91887-3329-462e-aae7-c445430f3738",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -214,8 +206,8 @@
                 },
                 {
                     "name": "",
-                    "id": "a2f6995c-514b-451a-8230-094da43b99ec",
-                    "path": "<Gamepad>/buttonSouth",
+                    "id": "339b44bb-cfc0-49db-ac93-c550a03281d3",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

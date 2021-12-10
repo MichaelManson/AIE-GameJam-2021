@@ -16,10 +16,14 @@ public class PlayerConfig : MonoBehaviour
 
     public bool IsReady {get; set;}
 
+    public GameObject playerPrefabTest;
+
     private void Start()
     {
         // Set up player index name (Player 1, Player 2 etc)
-        playerText.text = "Player " + playerId;
+        //playerText.text = "Player " + playerId;
+
+
     }
 
     public void Ready_performed(InputAction.CallbackContext obj)
@@ -27,7 +31,7 @@ public class PlayerConfig : MonoBehaviour
         Debug.Log("Player interacting is:" + playerId);
         IsReady = !IsReady;
 
-        UpdateUI();
+        //UpdateUI();
 
         // Sends a message to the manager to update ready players
         PlayerConfigManager.Instance.UpdatePlayerProfiles(this, IsReady);
@@ -45,4 +49,18 @@ public class PlayerConfig : MonoBehaviour
             readyText.enabled = false;
         }
     }
+
+    private void SpawnPlayers()
+    {
+        playerPrefabTest = Instantiate(playerPrefabTest);
+        playerPrefabTest.transform.parent = null;
+        playerPrefabTest.transform.position = Vector3.zero;
+
+        PlayerInput playerInput = GetComponent<PlayerInput>();
+
+        PlayerInput newPlayer = playerPrefabTest.AddComponent<PlayerInput>();
+
+        
+    }
+
 }

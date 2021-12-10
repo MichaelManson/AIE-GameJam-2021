@@ -230,6 +230,7 @@ MonoBehaviour:
   playerText: {fileID: 8389858134473250728}
   readyText: {fileID: 8389858135232726169}
   playerId: 0
+  playerPrefabTest: {fileID: 6401980631675963879, guid: 8f447b2523c8de040be29b3d19eca638, type: 3}
 --- !u!114 &7688860526695450659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,7 +238,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8389858134888082373}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
