@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &2571587706064199368
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009758568975092990}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.9426365, y: 7.79311, z: 8.054982}
+  m_Center: {x: -4.9713182, y: 3.396555, z: 3.527491}
 --- !u!1 &8043489100543237639
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,6 +688,11 @@ PrefabInstance:
 --- !u!4 &1202399981760058948 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2857318133610480383, guid: 99cec2f4e79d68241b3fd087c9be48ec, type: 3}
+  m_PrefabInstance: {fileID: 3965687604604310715}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2009758568975092990 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3237220723547363397, guid: 99cec2f4e79d68241b3fd087c9be48ec, type: 3}
   m_PrefabInstance: {fileID: 3965687604604310715}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3965687604664552978
@@ -1410,6 +1428,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 231843358076154241, guid: e210ac63211a14341ac5b277cb69961a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 672905511716005739, guid: e210ac63211a14341ac5b277cb69961a, type: 3}
       propertyPath: m_Name
       value: Mint Green
@@ -1474,6 +1496,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2204769681669236449, guid: fd926694790e2994882318c0af16cfd8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5856590482048602697, guid: fd926694790e2994882318c0af16cfd8, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1660,6 +1686,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2204769681669236449, guid: fd926694790e2994882318c0af16cfd8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5856590482048602697, guid: fd926694790e2994882318c0af16cfd8, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2276,6 +2306,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 152404766806015441, guid: e210ac63211a14341ac5b277cb69961a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 231843358076154241, guid: e210ac63211a14341ac5b277cb69961a, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 672905511716005739, guid: e210ac63211a14341ac5b277cb69961a, type: 3}
