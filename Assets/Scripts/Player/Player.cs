@@ -36,15 +36,19 @@ public class Player : MonoBehaviour
         PlayerManager.Instance.players.Add(this);
         
         //Debug.Log(name + " " + PlayerNumber);
+        
+        DontDestroyOnLoad(this);
     }
 
     private void OnDisable()
     {
-        // Increase the number of current players
+        // Decrease the number of current players
         GameManager.Instance.currentPlayers--;
         
         // Remove player from the list of players
         PlayerManager.Instance.RemovePlayer(this);
+        
+        Destroy(this);
     }
 
     /*private void OnCollisionEnter(Collision collision)

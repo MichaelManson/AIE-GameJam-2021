@@ -22,18 +22,18 @@ public class RoofTiles : MonoBehaviour
             StartCoroutine(DropTile());
         }
     }
-
+     
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
+        
             StartCoroutine(DropTile());
-        }
+        
     }
 
     IEnumerator DropTile()
     {
         yield return new WaitForSeconds(1f);
+        rb.isKinematic = false;
         rb.useGravity = true;
         _collider.enabled = false;
     }

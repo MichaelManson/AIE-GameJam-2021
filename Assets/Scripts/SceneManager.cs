@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using _scene = UnityEngine.SceneManagement.SceneManager;
 using UnityEngine;
 // ReSharper disable CheckNamespace
@@ -16,28 +17,30 @@ namespace CookieClash
             Instance = this;
         }
 
-        public void LoadMainMenu()
+        public async void LoadMainMenu()
         {
-            _scene.LoadScene(sceneBuildIndex: 0);
+            // Do the cool transition
+            await GameManager.Instance.DoLevelTransitionAnimation();
             
+            _scene.LoadScene(sceneBuildIndex: 0);
         }
 
-        public void LoadLobby()
+        public async void LoadLobby()
         {
-            _scene.LoadScene(sceneBuildIndex: 1);
+            // Do the cool transition
+            await GameManager.Instance.DoLevelTransitionAnimation();
 
+            _scene.LoadScene(sceneBuildIndex: 1);
         }
 
-        public void LoadGame()
+        public static void LoadGame()
         {
             _scene.LoadScene(sceneBuildIndex: 2);
-
         }
 
-        public void LoadEndGame()
+        public static void LoadEndGame()
         {
             _scene.LoadScene(sceneBuildIndex: 3);
-
         }
     }
 }

@@ -4,12 +4,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using TMPro.EditorUtilities;
 using UnityEditor;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using CookieClash;
 using Random = UnityEngine.Random;
+using SceneManager = CookieClash.SceneManager;
+
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable ConvertToAutoPropertyWithPrivateSetter
 // ReSharper disable once ForeachCanBeConvertedToQueryUsingAnotherGetEnumerator
@@ -66,7 +69,7 @@ public class GameManager : MonoBehaviour
     private List<Level> _availableLevels = new List<Level>();
 
     private Player _lastWinner;
-    
+
     #endregion
 
     #region Delegates
@@ -99,7 +102,7 @@ public class GameManager : MonoBehaviour
     public static void RoundWon() => OnRoundWon?.Invoke();
 
     #endregion
-    
+
     private void Start()
     {
         _timer = GetComponent<Timer>();
@@ -118,8 +121,8 @@ public class GameManager : MonoBehaviour
         //_ui.ResetPlayerScores();
 
         currentGameState = GameStates.Playing;
-        
-        await NewRound();
+
+        await NewRound(true);
     }
 
     public static void SpawnCharacters(List<Player> players)
@@ -162,6 +165,9 @@ public class GameManager : MonoBehaviour
     
     private void LoadRandomLevel()
     {
+        // Make sure the level has somewhere to spawn
+        if (!_level.levelParent) _level.levelParent = GameObject.Find("Level Parent").transform;
+        
         // If there aren't any available levels, add all levels back to the list
         if (_availableLevels.Count == 0) _availableLevels = _level.levels;
 
@@ -178,6 +184,8 @@ public class GameManager : MonoBehaviour
         // Remove the chosen level from the available levels,
         // so the players don't play the same levels over and over again
         _availableLevels.Remove(level);
+
+        print(_level.currentLevel.name);
     }
 
     public void MatchWinner(Player player) => _lastWinner = player;
@@ -210,23 +218,25 @@ public class GameManager : MonoBehaviour
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
-    private async Task NewRound()
+    private async Task NewRound(bool startRound = false)
     {
         // Set time to 1x (normal) speed
         Time.timeScale = 1f;
         
         // Do the level transition animation
         await DoLevelTransitionAnimation();
-        
-        // Wait half a second
-        await Task.Delay(500);
-        
-        
+
         // At this point we are right in the middle of the transition
         // Now is the time to load levels and do any other necessary checks
+        
+        // Load the game scene if it's the first round
+        if (startRound) SceneManager.LoadGame();
+        
+        _ui.HUDCanvas.gameObject.SetActive(true);
+
+        await Task.Delay(100);
 
         PlayerManager.Instance.activePlayers = new List<Player>(PlayerManager.Instance.players);
-        
 
         // Turn off win text
         UIManager.Instance.winText.gameObject.SetActive(false);
@@ -238,7 +248,7 @@ public class GameManager : MonoBehaviour
             GameWon();
 
             // Load up the podium
-            _level.LoadWinLevel();
+            SceneManager.LoadEndGame();
 
             await Task.Delay(100);
             
@@ -299,10 +309,14 @@ public class GameManager : MonoBehaviour
     
     internal async Task DoLevelTransitionAnimation()
     {
+        // Make sure game is running at normal speed
+        Time.timeScale = 1f;
+        
         _ui.fadePanels[0].GetComponent<Animation>().Play();
         _ui.fadePanels[1].GetComponent<Animation>().Play();
         
-        await Task.Yield();
+        // Wait half a second
+        await Task.Delay(500);
     }
 
     internal async Task Countdown()

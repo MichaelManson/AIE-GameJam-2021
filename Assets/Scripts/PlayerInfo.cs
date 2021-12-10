@@ -28,6 +28,8 @@ public class PlayerInfo : MonoBehaviour
 
     private void Update()
     {
+        if (!mainCam) mainCam = Camera.main;
+        
         // Ensures the ui is always looking directly at the camera
         transform.forward = mainCam.transform.forward;
     }
