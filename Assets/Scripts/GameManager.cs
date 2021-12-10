@@ -6,7 +6,9 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using TMPro.EditorUtilities;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 using UnityEngine;
+using CookieClash;
 using Random = UnityEngine.Random;
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable ConvertToAutoPropertyWithPrivateSetter
