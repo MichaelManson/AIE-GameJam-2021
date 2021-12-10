@@ -8,7 +8,15 @@ public class PlayerConfigManager : MonoBehaviour
 {
     public static PlayerConfigManager Instance;
 
+    [SerializeField] private int lobbyWaitTime = 3;
+
     [SerializeField] private GameObject playerProfilePrefab;
+
+    [SerializeField] private GameObject playerInfoPrefab;
+
+    [SerializeField] private Canvas canvas;
+
+    [SerializeField] private Timer timer;
 
     public Transform[] points;
 
@@ -43,9 +51,10 @@ public class PlayerConfigManager : MonoBehaviour
         count++;
 
         PlayerConfig player = input.GetComponent<PlayerConfig>();
-        player.playerId = count;
+        player.PlayerId = count;
+        SetUpPlayerInfo(player);
 
-        Debug.Log("Player id: " + player.playerId);
+        Debug.Log("Player id: " + player.PlayerId);
 
         // Keep track of currently-joined players
         playersJoined.Add(player);
@@ -56,7 +65,7 @@ public class PlayerConfigManager : MonoBehaviour
 
     public void UpdatePlayerProfiles(PlayerConfig player, bool isReady)
     {
-        playersReady[player.playerId] = isReady;
+        playersReady[player.PlayerId] = isReady;
 
         CheckPlayerProfiles();
 
@@ -84,6 +93,7 @@ public class PlayerConfigManager : MonoBehaviour
         if (playersJoined.Count == 0)
         {
             StopAllCoroutines();
+            timer.StopAllCoroutines();
             allPlayersReady = false;
             return;
         }
@@ -100,6 +110,7 @@ public class PlayerConfigManager : MonoBehaviour
                 Debug.Log("Not everyone is ready!");
                 allPlayersReady = false;
                 StopAllCoroutines();
+                timer.StopAllCoroutines();
             }
         }
 
@@ -114,10 +125,34 @@ public class PlayerConfigManager : MonoBehaviour
     /// <returns></returns>
     private IEnumerator BeginCountDown()
     {
+        timer.BeginTimer(lobbyWaitTime);
+
         yield return new WaitForSeconds(3.0f);
 
         Debug.Log("All players ready. Proceed!");
+
+        Reset();
+
+        CookieClash.SceneManager.Instance.LoadGame();
     }
 
+    private void Reset()
+    {
+        for(int i = 0; i < playersJoined.Count; i++)
+        {
+            // Set ready back to false
+            playersJoined[i].IsReady = false;
+            playersJoined[i].PlayerInfo.PlayerConfig_OnReadyEvent();
+        }
+    }
 
+    public void SetUpPlayerInfo(PlayerConfig player)
+    {
+        PlayerInfo playerInfo = player.transform.GetComponentInChildren<PlayerInfo>();
+
+        playerInfo.GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
+
+        playerInfo.Initialise(player);
+        
+    }
 }

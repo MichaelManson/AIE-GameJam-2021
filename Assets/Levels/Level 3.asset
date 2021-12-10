@@ -15,3 +15,4 @@ MonoBehaviour:
   levelGeo: {fileID: 8591902852524553264, guid: 202db226a457bb247a3eca18be82477e, type: 3}
   previewImage: {fileID: 0}
   levelObjectiveType: 0
+  objectiveDescription: Don't fall off!

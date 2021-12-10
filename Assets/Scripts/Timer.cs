@@ -35,8 +35,6 @@ public class Timer : MonoBehaviour
     {
         StopAllCoroutines();
 
-        
-        
         GameManager.RoundOver();
     }
 }

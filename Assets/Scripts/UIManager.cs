@@ -39,6 +39,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI winText;
     public TextMeshProUGUI countdownText;
+    public TextMeshProUGUI objectiveText;
 
     [Space] public Image[] fadePanels = new Image[2];
     
@@ -65,7 +66,9 @@ public class UIManager : MonoBehaviour
         
         winText.gameObject.SetActive(false);
         
-        timerText.text = "";
+        if (timerText) timerText.text = "";
+        
+        if (objectiveText) objectiveText.text = "";
 
         //fadePanel.color = FadePanelColourClear;
     }
