@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4806287970952249489}
   - component: {fileID: 7302492479218480219}
   - component: {fileID: 738387749656457670}
+  - component: {fileID: 6495474852499721684}
   m_Layer: 0
   m_Name: ChickenLeg
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9103840038997251470}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.34, y: -6.51, z: 0}
   m_LocalScale: {x: 0.0060491324, y: 0.0060491324, z: 0.0060491324}
   m_Children: []
@@ -90,8 +91,20 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9103840038997251470}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 437.80493, y: 202.40674, z: 202.5354}
   m_Center: {x: 90.25712, y: -15.218893, z: 19.178495}
+--- !u!114 &6495474852499721684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9103840038997251470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a0e95d99683444f9c3bd17fb33e090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
