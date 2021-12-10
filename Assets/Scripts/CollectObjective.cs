@@ -12,6 +12,8 @@ public class CollectObjective : MonoBehaviour
         if (GameManager.Instance.CurrentLevelObjectiveType != LevelManager.LevelObjectiveType.CollectObject) return;
 
         GameManager.Instance.SetRoundWinner(PlayerManager.Instance.CheckIfCollidedWithPlayer(other.gameObject.layer));
+
+        GameManager.Instance.RoundWinner.Wins++;
         
         GameManager.Instance.RoundIsOver();
         

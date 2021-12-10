@@ -85,11 +85,23 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void UpdatePlayerScores(bool turnOn = true)
+    {
+        for (var i = 0; i < PlayerManager.Instance.players.Count; i++)
+        {
+            var scoreText = playerScores[i];
+            var wins = PlayerManager.Instance.players[i].Wins;
+
+            scoreText.text = "";
+            scoreText.text += wins > 9 ? "" + wins : "0" + wins;
+        }
+    }
+    
     public void ResetPlayerScores()
     {
         foreach (var scoreText in playerScores)
         {
-            scoreText.text = "o";
+            scoreText.text = "00";
         }
     }
     
