@@ -159,7 +159,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Makes all players able to move freely. (Rigidbody set to non-kinematic)
     /// </summary>
-    private static void ResetForcesOnPlayers()
+    public static void ResetForcesOnPlayers()
     {
         foreach (var player in PlayerManager.Instance.players)
         {
