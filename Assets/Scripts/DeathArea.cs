@@ -22,8 +22,8 @@ public class DeathArea : MonoBehaviour
         // Remove the dead player from the list of active players
         PlayerManager.Instance.activePlayers.Remove(p);
         
-        // Set this player to be 'dead'
-        p.Dead = true;
+        // Set this player to be invisible
+        p.gameObject.SetActive(false);
 
         // Remove the dead player from the list of active players
         PlayerManager.Instance.activePlayers.Remove(p);
@@ -36,6 +36,8 @@ public class DeathArea : MonoBehaviour
             
         // Tell the game that the last remaining player is the winner
         GameManager.Instance.SetRoundWinner(PlayerManager.Instance.activePlayers[0]);
+
+        GameManager.Instance.RoundWinner.Wins++;
         
         GameManager.Instance.RoundIsOver();
         

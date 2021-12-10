@@ -216,10 +216,15 @@ public class GameManager : MonoBehaviour
     public async void RoundIsOver()
     {
         print("Round is now over!");
-        
-        // Slow down time at the end like Stick Fight
-        await SlowTime();
 
+        await Task.Yield();
+        
+        Timer.StopTimer();
+        
+        _ui.UpdatePlayerScores();
+        
+        _ui.HUDCanvas.gameObject.SetActive(true);
+        
         // Turn the win msg on
         _ui.winText.gameObject.SetActive(true);
         
@@ -229,6 +234,9 @@ public class GameManager : MonoBehaviour
             "Player " + RoundWinner.PlayerNumber + " is the winner!" : 
             // Else say Round Over
             "Round Over...";
+        
+        // Slow down time at the end like Stick Fight
+        await SlowTime();
 
         // Prepare new round
         await NewRound();
@@ -250,6 +258,8 @@ public class GameManager : MonoBehaviour
         if (startRound) SceneManager.LoadGame();
 
         _lastWinner = null;
+
+        roundWon = false;
         
         _ui.HUDCanvas.gameObject.SetActive(true);
 
