@@ -25,13 +25,17 @@ public class PlayerConfig : MonoBehaviour
 
     public void Ready_performed(InputAction.CallbackContext obj)
     {
-        Debug.Log("Player interacting is:" + PlayerId);
-        IsReady = !IsReady;
+        // If players are in lobby...
+        if (GameManager.Instance.currentGameState == GameManager.GameStates.Menu)
+        {
+            Debug.Log("Player interacting is:" + PlayerId);
+            IsReady = !IsReady;
 
-        // Sends a message to the manager to update ready players
-        PlayerConfigManager.Instance.UpdatePlayerProfiles(this, IsReady);
+            // Sends a message to the manager to update ready players
+            PlayerConfigManager.Instance.UpdatePlayerProfiles(this, IsReady);
 
-        // Enabled / Disable the ready text
-        PlayerInfo.PlayerConfig_OnReadyEvent();
+            // Enabled / Disable the ready text
+            PlayerInfo.PlayerConfig_OnReadyEvent();
+        }
     }
 }

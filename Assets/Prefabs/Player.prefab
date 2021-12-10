@@ -4184,6 +4184,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b4e8da17-17b8-4ea9-8526-8408efb075f6
     m_ActionName: Player/Ready[/XInputControllerWindows/buttonNorth,/XInputControllerWindows/buttonNorth,/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 474714279977426272}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b4f12cc9-7c9d-4612-a769-1ac309174c4a
+    m_ActionName: Player/Pause[/XInputControllerWindows/start,/XInputControllerWindows/start,/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

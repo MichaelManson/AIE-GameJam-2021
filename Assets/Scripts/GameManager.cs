@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using TMPro.EditorUtilities;
+//using TMPro.EditorUtilities; // funny build error
 using UnityEditor;
 using UnityEngine.SceneManagement;
 using UnityEngine;
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int scoreToWin;
     
-    private Timer _timer;
+    public Timer _timer;
     private UIManager _ui;
     private LevelManager _level;
 

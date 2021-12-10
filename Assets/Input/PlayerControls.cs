@@ -49,6 +49,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""b4f12cc9-7c9d-4612-a769-1ac309174c4a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -227,6 +235,28 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Ready"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""af3f7bc6-13e9-42df-8251-1c77dcf0077c"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""69dcffdc-6f6b-46ae-b312-15d0151241fb"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -239,6 +269,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Punch = m_Player.FindAction("Punch", throwIfNotFound: true);
         m_Player_Ready = m_Player.FindAction("Ready", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -292,6 +323,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Punch;
     private readonly InputAction m_Player_Ready;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -300,6 +332,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Punch => m_Wrapper.m_Player_Punch;
         public InputAction @Ready => m_Wrapper.m_Player_Ready;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -321,6 +354,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Ready.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReady;
                 @Ready.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReady;
                 @Ready.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReady;
+                @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -337,6 +373,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Ready.started += instance.OnReady;
                 @Ready.performed += instance.OnReady;
                 @Ready.canceled += instance.OnReady;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -347,5 +386,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnPunch(InputAction.CallbackContext context);
         void OnReady(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }
