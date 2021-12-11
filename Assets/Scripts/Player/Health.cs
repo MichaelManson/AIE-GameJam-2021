@@ -20,14 +20,14 @@ public class Health : MonoBehaviour
     }
 
     [ContextMenu("Kill player")]
-    private void KillPlayer()
+    public void KillPlayer()
     {
         TakeDamage(100.0f);
     }
 
     public void TakeDamage(float damage)
     {
-        CameraShaker.Instance.ShakeOnce(4f, 4f, 0.1f, .75f);
+        CameraShaker.Instance.ShakeOnce(2f, 2f, 0.1f, .75f);
         // Subtract the damage
         health -= damage;
 

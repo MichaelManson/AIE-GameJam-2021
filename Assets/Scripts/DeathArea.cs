@@ -26,13 +26,15 @@ public class DeathArea : MonoBehaviour
 
         // Remove the dead player from the list of active players
         PlayerManager.Instance.activePlayers.Remove(p);
-        
+
+        //needs resetting?
+        GameManager.watchForDeath = true;
         // Set this player to be invisible
         //p.gameObject.SetActive(false);
 
         // Remove the dead player from the list of active players
         //PlayerManager.Instance.activePlayers.Remove(p);
-        
+
         // First, see if the level is a deathmatch type
         if (GameManager.Instance.CurrentLevelObjectiveType != LevelManager.LevelObjectiveType.Deathmatch) return;
         
@@ -51,4 +53,5 @@ public class DeathArea : MonoBehaviour
         
         GameManager.roundWon = true;
     }
+
 }

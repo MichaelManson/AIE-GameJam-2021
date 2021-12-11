@@ -15,4 +15,4 @@ MonoBehaviour:
   levelGeo: {fileID: 8047248431364850258, guid: 97c821ff1b1ef654e888f850bb4ff0ba, type: 3}
   previewImage: {fileID: 0}
   levelObjectiveType: 0
-  objectiveDescription: Last Gingerbread man standing wins!
+  objectiveDescription: Don't get dunked in the milk!
