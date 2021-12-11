@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using EZCameraShake;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,6 +27,7 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        CameraShaker.Instance.ShakeOnce(4f, 4f, 0.1f, .75f);
         // Subtract the damage
         health -= damage;
 
