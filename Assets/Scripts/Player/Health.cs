@@ -27,7 +27,7 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        CameraShaker.Instance.ShakeOnce(2f, 2f, 0.1f, .75f);
+        
         // Subtract the damage
         health -= damage;
 
@@ -46,7 +46,46 @@ public class Health : MonoBehaviour
             JointDrive jointDriveYZ = hipJoint.angularYZDrive;
             jointDriveYZ.positionSpring = 0f;
             hipJoint.angularYZDrive = jointDriveYZ;
+
+            // death area
+            //if (!GameManager.watchForDeath) return;
+
+            //GameManager.watchForDeath = false;
+
+            if (GameManager.roundWon) return;
+
+            Player p = null;
+
+            p = PlayerManager.Instance.CheckIfCollidedWithPlayer(this.gameObject.layer);
+
+            if (!p) return;
+
+            p.Dead = true;
+
+            PlayerManager.Instance.activePlayers.Remove(p);
+
+            //needs resetting?
+            GameManager.watchForDeath = true;
+
+            if (GameManager.Instance.CurrentLevelObjectiveType != LevelManager.LevelObjectiveType.Deathmatch) return;
+
+            if (PlayerManager.Instance.activePlayers.Count != 1) return;
+
+            Debug.Log(PlayerManager.Instance.activePlayers[0].name);
+
+            GameManager.Instance.SetRoundWinner(PlayerManager.Instance.activePlayers[0]);
+
+            Debug.Log(GameManager.Instance.RoundWinner.GetComponent<PlayerConfig>().PlayerId);
+
+            GameManager.Instance.RoundWinner.Wins++;
+
+            GameManager.Instance.RoundIsOver();
+
+            GameManager.roundWon = true;
+
+
         }
+        CameraShaker.Instance.ShakeOnce(2f, 2f, 0.1f, .75f);
     }
 
     public void Revive()

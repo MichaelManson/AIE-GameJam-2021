@@ -25,7 +25,7 @@ public class MeleeCollision : MonoBehaviour
             {
                 Debug.Log("Applying FORCE");
 
-                rb.AddForce(transform.forward * knockbackForce);
+                rb.AddForce(transform.forward * knockbackForce, ForceMode.Impulse);
                 HasHit = true;
             }
             ////// Otherwise access the playerController of the enemy and apply force

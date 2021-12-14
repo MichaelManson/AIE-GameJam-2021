@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody hips;
 
     [Header("Combat")]
-    public float damage = 5.0f;
+    public float damage = 17f;
     private float meleeTimer = 0.0f;
     [Tooltip("The amount of delays required between melee attacks")] [SerializeField] 
     private float meleeRate = 0.5f;
@@ -78,6 +78,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("IN AIR");
                 hips.AddForce(velocity * airSpeed);
+                IsGrounded = false;
             }
             else
             {

@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 3049851903547084517}
   - component: {fileID: 3049851903547084516}
   - component: {fileID: 3049851903547084512}
-  - component: {fileID: 6986666448729393801}
+  - component: {fileID: 148065967}
   m_Layer: 13
   m_Name: Milk collider
   m_TagString: Untagged
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c7759e78c73644990a8547a5302fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &6986666448729393801
+--- !u!54 &148065967
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -830,6 +830,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &1955395930
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5925471084209275114}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3032278795595728665, guid: 8ae636907d25e1c41bde2bd5947badbe, type: 3}
 --- !u!1001 &1836546402606185839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -949,14 +963,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1c4e40d6853cd8408e632b17a9b62bc, type: 3}
---- !u!4 &351891259587506468 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2134303825508875760, guid: a1c4e40d6853cd8408e632b17a9b62bc, type: 3}
-  m_PrefabInstance: {fileID: 1836546402615921876}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1128709781519297438 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1645294536391845706, guid: a1c4e40d6853cd8408e632b17a9b62bc, type: 3}
+  m_PrefabInstance: {fileID: 1836546402615921876}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &351891259587506468 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2134303825508875760, guid: a1c4e40d6853cd8408e632b17a9b62bc, type: 3}
   m_PrefabInstance: {fileID: 1836546402615921876}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1836546402626262318
@@ -2328,8 +2342,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cake_Platform
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6346114644509880116, guid: 9e9f5e1e0408b0d498e8755d36aafaf5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9e9f5e1e0408b0d498e8755d36aafaf5, type: 3}
+--- !u!1 &5925471084209275114 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5424367734793463927, guid: 9e9f5e1e0408b0d498e8755d36aafaf5, type: 3}
+  m_PrefabInstance: {fileID: 1836546404241172637}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6444739177611582032 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4615320022498423501, guid: 9e9f5e1e0408b0d498e8755d36aafaf5, type: 3}

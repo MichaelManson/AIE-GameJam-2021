@@ -464,6 +464,34 @@ Transform:
   m_Father: {fileID: 3490309165197827226}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &994607654
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5083761018023118176}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8207399254768330703, guid: fc27ed11abccc3f48beb970e1644a708, type: 3}
+--- !u!64 &687086747
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5083761019991083346}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8207399254768330703, guid: fc27ed11abccc3f48beb970e1644a708, type: 3}
 --- !u!1 &6074937179135112106
 GameObject:
   m_ObjectHideFlags: 0
@@ -2940,8 +2968,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CandyCaneLow
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -7412707268822901059, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
+--- !u!1 &5083761018023118176 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4063503866506305535, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
+  m_PrefabInstance: {fileID: 9144931274110524063}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5604436280886648794 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3688350857297429829, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
@@ -3510,11 +3544,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: CandyCaneLow (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -7412707268822901059, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
 --- !u!4 &5604436282307220456 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3688350857297429829, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
+  m_PrefabInstance: {fileID: 9144931274450998957}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5083761019991083346 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4063503866506305535, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
   m_PrefabInstance: {fileID: 9144931274450998957}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9144931274515529732

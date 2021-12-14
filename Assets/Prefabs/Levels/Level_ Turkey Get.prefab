@@ -1,5 +1,89 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!64 &1401127657
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35493942717665988}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8207399254768330703, guid: fc27ed11abccc3f48beb970e1644a708, type: 3}
+--- !u!64 &1565134427
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35493942903364676}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8207399254768330703, guid: fc27ed11abccc3f48beb970e1644a708, type: 3}
+--- !u!64 &241784938
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35493943111743777}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8207399254768330703, guid: fc27ed11abccc3f48beb970e1644a708, type: 3}
+--- !u!64 &999880323
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35493943241438482}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8207399254768330703, guid: fc27ed11abccc3f48beb970e1644a708, type: 3}
+--- !u!64 &646987968
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35493944304954216}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8207399254768330703, guid: fc27ed11abccc3f48beb970e1644a708, type: 3}
+--- !u!64 &411353191
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35493944566116653}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8207399254768330703, guid: fc27ed11abccc3f48beb970e1644a708, type: 3}
 --- !u!1 &4042665322224742060
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,8 +977,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CandyCaneLow (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -7412707268822901059, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
+--- !u!1 &35493943241438482 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4063503866506305535, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
+  m_PrefabInstance: {fileID: 4042665322478414573}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &807772852763045800 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3688350857297429829, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
@@ -955,11 +1045,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: CandyCaneLow
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -7412707268822901059, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
 --- !u!4 &807772851828040603 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3688350857297429829, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
+  m_PrefabInstance: {fileID: 4042665322616104670}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &35493943111743777 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4063503866506305535, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
   m_PrefabInstance: {fileID: 4042665322616104670}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4042665322622605660
@@ -1157,8 +1253,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CandyCaneLow (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -7412707268822901059, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
+--- !u!1 &35493942903364676 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4063503866506305535, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
+  m_PrefabInstance: {fileID: 4042665322692871099}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &807772851902777086 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3688350857297429829, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
@@ -1355,8 +1457,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CandyCaneLow (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -7412707268822901059, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
+--- !u!1 &35493942717665988 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4063503866506305535, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
+  m_PrefabInstance: {fileID: 4042665323044113723}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &807772852256049278 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3688350857297429829, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
@@ -1747,8 +1855,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CandyCaneLow (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -7412707268822901059, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
+--- !u!1 &35493944566116653 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4063503866506305535, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
+  m_PrefabInstance: {fileID: 4042665323332284114}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &807772853620059031 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3688350857297429829, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
@@ -1995,11 +2109,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: CandyCaneLow (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -7412707268822901059, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
 --- !u!4 &807772853889479122 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3688350857297429829, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
+  m_PrefabInstance: {fileID: 4042665323607995543}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &35493944304954216 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4063503866506305535, guid: 3cb91eae116550244816dbdce953ab7d, type: 3}
   m_PrefabInstance: {fileID: 4042665323607995543}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4042665323615455756
