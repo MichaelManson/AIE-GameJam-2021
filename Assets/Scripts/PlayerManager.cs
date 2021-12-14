@@ -59,7 +59,6 @@ public class PlayerManager : MonoBehaviour
         {
             player.transform.position = new Vector3(0, 20, 0);
             player.center.transform.position = new Vector3(0, 20, 0);
-
         }
     }
     
@@ -67,7 +66,6 @@ public class PlayerManager : MonoBehaviour
     {
         // Remove the player from the list of active players
         players.Remove(player);
-
         // Adjust the player number for each active player
         foreach (var p in players.Where(p => p.PlayerNumber > player.PlayerNumber))
         {

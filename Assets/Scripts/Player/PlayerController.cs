@@ -78,7 +78,6 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("IN AIR");
                 hips.AddForce(velocity * airSpeed);
-                IsGrounded = false;
             }
             else
             {

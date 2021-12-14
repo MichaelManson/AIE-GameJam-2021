@@ -7,9 +7,9 @@ public class DeathArea : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!GameManager.watchForDeath) return;
+        //if (!GameManager.watchForDeath) return;
 
-        GameManager.watchForDeath = false;
+        //GameManager.watchForDeath = false;
         
         print("hit" + other.gameObject.name + ", " + other.gameObject.layer + ", " + GameManager.roundWon);
         
@@ -28,7 +28,7 @@ public class DeathArea : MonoBehaviour
         PlayerManager.Instance.activePlayers.Remove(p);
 
         //needs resetting?
-        GameManager.watchForDeath = true;
+        //GameManager.watchForDeath = true;
         // Set this player to be invisible
         //p.gameObject.SetActive(false);
 
