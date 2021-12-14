@@ -86,6 +86,7 @@ public class Health : MonoBehaviour
 
         }
         CameraShaker.Instance.ShakeOnce(2f, 2f, 0.1f, .75f);
+        //play rudolph death announcment - FATALITY
     }
 
     public void Revive()

@@ -409,8 +409,6 @@ public class GameManager : MonoBehaviour
     
     public static void PauseGame()
     {
-        Time.timeScale = 0f;
-
-        UIManager.Instance.ShowPauseMenu(true);
+        UIManager.Instance.Pause();
     }
 }

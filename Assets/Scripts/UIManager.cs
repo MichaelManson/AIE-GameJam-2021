@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
@@ -27,8 +28,9 @@ public class UIManager : MonoBehaviour
     // public:
 
     [Header("Canvases")] 
-    public Canvas pauseCanvas;
+    public GameObject pauseCanvas;
     public Canvas HUDCanvas;
+    public GameObject firstButtonOnPause;
     
     public TextMeshProUGUI[] playerScores = new TextMeshProUGUI[4];
     
@@ -135,18 +137,26 @@ public class UIManager : MonoBehaviour
 
     public void Pause()
     {
-        //if(pauseScreen.activeInHierarchy)
-        //{
-        //    pauseScreen.SetActive(false);
-        //    GameManager.ResetForcesOnPlayers();
-        //    Timer.PauseTimer();
-        //    //Time.timeScale = 1.0f;
-        //}
-        //else
-        //{
-        //    pauseScreen.SetActive(true);
-        //    GameManager.ResetForcesOnPlayers();
-        //    //Time.timeScale = 0.0f;
-        //}    
+        
+            if (pauseScreen.activeInHierarchy)
+            {
+                pauseScreen.SetActive(false);
+                GameManager.ResetForcesOnPlayers();
+                //Timer.PauseTimer();
+                Time.timeScale = 1.0f;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            else
+            {
+                pauseScreen.SetActive(true);
+                GameManager.ResetForcesOnPlayers();
+                Time.timeScale = 0.0f;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(firstButtonOnPause);
+        }
+
     }
 }

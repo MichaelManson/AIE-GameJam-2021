@@ -66,4 +66,22 @@ public class LevelManager : MonoBehaviour
     {
         LoadLevel(winLevel);
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
+    public void GoToMenu()
+    {
+        Destroy(GameObject.Find("GameManager"));
+
+        var allClones = GameObject.FindGameObjectsWithTag("Player");
+        foreach (var playerClone in allClones)
+        {
+            Destroy(playerClone);
+        }
+
+        SceneManager.LoadScene("_Start", LoadSceneMode.Single);
+    }
 }

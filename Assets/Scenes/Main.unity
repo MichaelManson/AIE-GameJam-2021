@@ -1161,5 +1161,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Background Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7624166380916379660, guid: 46544dc7e3c826344ae492e7640f32fd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46544dc7e3c826344ae492e7640f32fd, type: 3}

@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8413931410510528531
 RectTransform:
   m_ObjectHideFlags: 0
@@ -311,6 +311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseCanvas: {fileID: 0}
   HUDCanvas: {fileID: 4730354698485323513}
+  firstButtonOnPause: {fileID: 0}
   playerScores:
   - {fileID: 4730354699059524628}
   - {fileID: 4730354698809157256}
