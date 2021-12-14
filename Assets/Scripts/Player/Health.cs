@@ -65,7 +65,7 @@ public class Health : MonoBehaviour
             PlayerManager.Instance.activePlayers.Remove(p);
 
             //needs resetting?
-            GameManager.watchForDeath = true;
+            //GameManager.watchForDeath = true;
 
             if (GameManager.Instance.CurrentLevelObjectiveType != LevelManager.LevelObjectiveType.Deathmatch) return;
 
